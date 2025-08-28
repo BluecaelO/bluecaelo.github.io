@@ -1,7 +1,7 @@
 ---
 title: Créer un environement de Dev éphémère (Nix-shell + Direnv)
 date: 2025-08-23
-description: Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère
+description: Utilisation de Nix et de Direnv pour la création d'environnement de développement éphémère
 tags:
   - nix
   - direnv
