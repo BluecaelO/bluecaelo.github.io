@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr-fr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Découverte de Incus | Blog</title>
+<meta property="og:title" content="Découverte de Incus | Blog" />
+<meta name="twitter:title" content="Découverte de Incus | Blog" />
+<meta itemprop="name" content="Découverte de Incus | Blog" />
+<meta name="application-name" content="Découverte de Incus | Blog" />
+<meta property="og:site_name" content="Portfolio" />
+
+<meta name="description" content="Cette article a pour but d&#39;explorer et de tester Incus.">
+<meta itemprop="description" content="Cette article a pour but d&#39;explorer et de tester Incus." />
+<meta property="og:description" content="Cette article a pour but d&#39;explorer et de tester Incus." />
+<meta name="twitter:description" content="Cette article a pour but d&#39;explorer et de tester Incus." />
+
+<meta property="og:locale" content="fr-fr" />
+<meta name="language" content="fr-fr" />
+
+  <link rel="alternate" hreflang="fr-fr" href="http://localhost:1313/posts/decouverte-incus/" title="French" />
+
+
+
+
+
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2025-08-23T00:00:00Z />
+    <meta property="article:published_time" content=2025-08-23T00:00:00Z />
+    <meta property="og:url" content="http://localhost:1313/posts/decouverte-incus/" />
+
+    
+    <meta property="og:article:author" content="BluecaelO" />
+    <meta property="article:author" content="BluecaelO" />
+    <meta name="author" content="BluecaelO" />
+    
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Découverte de Incus",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2025-08-23",
+        "description": "Cette article a pour but d'explorer et de tester Incus.",
+        "wordCount":  1795 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2025-08-23",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Blog"
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.148.2">
+
+    
+    <meta property="og:url" content="http://localhost:1313/posts/decouverte-incus/">
+  <meta property="og:site_name" content="Blog">
+  <meta property="og:title" content="Découverte de Incus">
+  <meta property="og:description" content="Cette article a pour but d&#39;explorer et de tester Incus.">
+  <meta property="og:locale" content="fr_fr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-23T00:00:00+00:00">
+    <meta property="article:tag" content="Incus">
+    <meta property="article:tag" content="Lxc">
+    <meta property="article:tag" content="Ovn">
+
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Découverte de Incus">
+  <meta name="twitter:description" content="Cette article a pour but d&#39;explorer et de tester Incus.">
+
+
+    
+
+    <link rel="canonical" href="http://localhost:1313/posts/decouverte-incus/">
+    <link href="/style.min.2d921c18cf1ec555ffc03d59a8adc211c402c68c930c27d6a0c306ab175a8d09.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="http://localhost:1313/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+</head>
+<body data-theme = "auto" class="notransition">
+
+<script src="/js/theme.js"></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="http://localhost:1313/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Accueil</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/">
+                        Accueil
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/posts/">
+                        Articles
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        À propos
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Découverte de Incus</h1>
+                
+                
+                
+                <div class="post-meta">
+                    <time datetime="2025-08-23T00:00:00&#43;00:00" itemprop="datePublished"> 23 août 2025 </time>
+                </div>
+                
+            </header>
+            
+    
+    <details class="toc" ZgotmplZ>
+        <summary><b>Table des matières</b></summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#prérequis">Prérequis</a></li>
+    <li><a href="#topologie">Topologie</a>
+      <ul>
+        <li><a href="#les-types-de-réseaux">Les types de réseaux</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#installation-de-incus">Installation de Incus</a></li>
+        <li><a href="#configuration-de-laccès-à-distance">Configuration de l&rsquo;accès à distance</a></li>
+      </ul>
+    </li>
+    <li><a href="#mise-en-place-de-linfrastructure">Mise en place de l&rsquo;infrastructure</a>
+      <ul>
+        <li><a href="#installation-et-configuration-de-ovn">Installation et configuration de OVN</a></li>
+        <li><a href="#création-du-réseau-bridge-parent">Création du réseau bridge parent</a></li>
+        <li><a href="#création-des-réseaux-ovn">Création des réseaux OVN</a></li>
+        <li><a href="#déploiement-des-instances">Déploiement des instances</a></li>
+        <li><a href="#exposition-des-services">Exposition des services</a></li>
+        <li><a href="#configuration-dincus-pour-le-monitoring">Configuration d&rsquo;Incus pour le monitoring</a></li>
+        <li><a href="#configuration-de-prometheus">Configuration de Prometheus</a></li>
+        <li><a href="#configuration-de-grafana">Configuration de Grafana</a></li>
+        <li><a href="#configuration-des-acls">Configuration des ACLs</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </details>
+            <div class="page-content">
+                <p><img src="/posts/decouverte-incus/img/Billboard.svg" alt="Image"></p>
+<h2 id="introduction">Introduction</h2>
+<p>Ce lab n&rsquo;a pas de but particulier. J&rsquo;ai simplement entendu parler d&rsquo;une technologie plutôt sympa et j&rsquo;ai voulu l&rsquo;essayer.
+Cette technologie, c&rsquo;est <strong>Incus</strong>. À l&rsquo;instar de Docker, Incus sert à gérer des conteneurs. Cependant, il dispose de fonctionnalités plus étendues, comme :</p>
+<ul>
+<li>un contrôle réseau plus complet,</li>
+<li>la possibilité de faire tourner des conteneurs LXC, OCI ainsi que des machines virtuelles (VM),</li>
+<li>la gestion des utilisateurs,</li>
+<li>etc.</li>
+</ul>
+<p>Pour plus de détails, je vous invite à consulter la <a href="https://linuxcontainers.org/incus/docs/main/">documentation officielle</a>.</p>
+<h2 id="prérequis">Prérequis</h2>
+<p>Une machine virtuelle avec au moins 2 Go de RAM.</p>
+<h2 id="topologie">Topologie</h2>
+<p><img src="/posts/decouverte-incus/img/topo.svg" alt="Image"></p>
+<p>Pour expérimenter Incus, j&rsquo;ai mis en place une topologie composée de :</p>
+<ul>
+<li>un serveur web,</li>
+<li>un serveur de collecte de métriques,</li>
+<li>un serveur de supervision.</li>
+</ul>
+<blockquote>
+<p>Ici, je ne vais pas m&rsquo;attarder sur la configuration de Prometheus, Grafana ou Nginx, mais principalement sur celle d&rsquo;Incus.</p></blockquote>
+<h3 id="les-types-de-réseaux">Les types de réseaux</h3>
+<p>Incus supporte plusieurs types de réseaux. Celui qui nous intéresse ici est le réseau de type <strong>OVN</strong>.
+Contrairement à un réseau bridge, un réseau OVN permet :</p>
+<ul>
+<li>de définir des ACL (listes de contrôle d&rsquo;accès) entre les instances d&rsquo;un même sous-réseau (plus précisément, à la même interface réseau),</li>
+<li>d&rsquo;avoir une topologie plus contrôlée (notamment en cluster).</li>
+</ul>
+<blockquote>
+<p>Pour la culture 🧠 : OVN est un système de <strong>SDN (Software-Defined Networking)</strong> qui permet d&rsquo;avoir une abstraction du réseau virtuel. Il est très pratique si vous souhaitez avoir un certain contrôle sur le réseau, en particulier dans un cluster.</p></blockquote>
+<hr>
+<h2 id="configuration">Configuration</h2>
+<h3 id="installation-de-incus">Installation de Incus</h3>
+<p>L&rsquo;installation dépend de votre OS ou gestionnaire de paquets. Suivez la documentation officielle : <a href="https://linuxcontainers.org/incus/docs/main/installing/#installing">Installation d&rsquo;Incus</a></p>
+<h4 id="configuration-de-base">Configuration de base</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Créer un groupe d&#39;administration pour Incus</span>
+</span></span><span style="display:flex;"><span>sudo adduser <span style="color:#ae81ff">\$</span>USER incus-admin
+</span></span><span style="display:flex;"><span>sudo newgrp incus-admin
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialiser Incus avec la configuration minimale</span>
+</span></span><span style="display:flex;"><span>incus admin init --minimal
+</span></span></code></pre></div><h3 id="configuration-de-laccès-à-distance">Configuration de l&rsquo;accès à distance</h3>
+<h4 id="exposer-le-serveur">Exposer le serveur</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus config set core.https_address :8443
+</span></span></code></pre></div><blockquote>
+<p>La commande ci-dessus expose entièrement l’API d’Incus, ce qui signifie qu’elle est accessible depuis toutes les interfaces réseau.
+Je vous recommande donc de spécifier l’adresse IP d’écoute que vous souhaitez utiliser pour le management de votre serveur.
+<code>incus config set core.https_address &lt;listen address&gt;:8443</code></p></blockquote>
+<h4 id="installer-le-client-incus">Installer le client Incus</h4>
+<p>Sur une machine distante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install incus-client <span style="color:#75715e"># Fedora</span>
+</span></span></code></pre></div><h4 id="créer-un-token-de-confiance">Créer un token de confiance</h4>
+<p>Sur le serveur Incus :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus config trust add &lt;nom_du_client&gt;
+</span></span></code></pre></div><p>Puis sur le client :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus remote add &lt;nom_du_client&gt; &lt;adresse_IP_du_serveur&gt;
+</span></span></code></pre></div><p>Incus va ensuite vous demander de renseigner le token généré lors de la commande précédente.</p>
+<hr>
+<h2 id="mise-en-place-de-linfrastructure">Mise en place de l&rsquo;infrastructure</h2>
+<h3 id="installation-et-configuration-de-ovn">Installation et configuration de OVN</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ovs-vsctl set open_vswitch . <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    external_ids<span style="color:#ae81ff">\:</span>ovn-remote<span style="color:#f92672">=</span>unix:/run/ovn/ovnsb_db.sock <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    external_ids<span style="color:#ae81ff">\:</span>ovn-encap-type<span style="color:#f92672">=</span>geneve <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    external_ids<span style="color:#ae81ff">\:</span>ovn-encap-ip<span style="color:#f92672">=</span>127.0.0.1
+</span></span></code></pre></div><p>À exécuter une seule fois, sur l&rsquo;hôte.</p>
+<h3 id="création-du-réseau-bridge-parent">Création du réseau bridge parent</h3>
+<p>Les réseaux OVN ont un réseau parent, qui peut être soit un réseau de type bridge, soit un réseau physique.
+Dans mon cas, j&rsquo;ai personnellement créé un réseau bridge dédié.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus network create ovn-bridge
+</span></span></code></pre></div><p>Ensuite, on configure le réseau <code>ovn-bridge</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus network set ovn-bridge <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    ipv4.dhcp.ranges<span style="color:#f92672">=</span>10.142.205.1-10.142.205.100 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    ipv4.ovn.ranges<span style="color:#f92672">=</span>10.142.205.101-10.142.205.254 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    ipv4.routes<span style="color:#f92672">=</span>192.168.10.0/24,192.168.20.0/24
+</span></span></code></pre></div><ul>
+<li><code>ipv4.dhcp.ranges</code> : correspond à la plage d&rsquo;adresses réservée aux machines directement connectées au réseau <code>ovn-bridge</code>.</li>
+<li><code>ipv4.ovn.ranges</code> : correspond à la plage d&rsquo;adresses réservée aux routeurs OVN qui seront connectés à <code>ovn-bridge</code>.</li>
+<li><code>ipv4.routes</code> : définit les sous-réseaux routés via les routeurs OVN. Dans notre cas, cela correspond aux réseaux monitoring (192.168.10.0/24) et web (192.168.20.0/24).</li>
+</ul>
+<h3 id="création-des-réseaux-ovn">Création des réseaux OVN</h3>
+<p>Maintenant, il suffit de créer des réseaux OVN en s&rsquo;appuyant sur la configuration du réseau parent. Cela se traduit par les commandes suivantes :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Création du réseau pour les instances de monitoring</span>
+</span></span><span style="display:flex;"><span>incus network create monitoring network<span style="color:#f92672">=</span>ovn-bridge --type<span style="color:#f92672">=</span>ovn <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    ipv4.address<span style="color:#f92672">=</span>192.168.10.1/24 ipv4.nat<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span> ipv6.address<span style="color:#f92672">=</span>none
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Création du réseau pour les instances web</span>
+</span></span><span style="display:flex;"><span>incus network create web network<span style="color:#f92672">=</span>ovn-bridge --type<span style="color:#f92672">=</span>ovn <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    ipv4.address<span style="color:#f92672">=</span>192.168.20.1/24 ipv4.nat<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span> ipv6.address<span style="color:#f92672">=</span>none
+</span></span></code></pre></div><ul>
+<li><code>network=ovn-bridge</code> : indique que le réseau OVN s&rsquo;appuie sur le bridge <code>ovn-bridge</code> comme réseau parent.</li>
+<li><code>--type=ovn</code> : spécifie qu&rsquo;il s&rsquo;agit d&rsquo;un réseau de type OVN.</li>
+<li><code>ipv4.address</code> : définit l&rsquo;adresse IP du routeur OVN et le sous-réseau utilisé.</li>
+<li><code>ipv4.nat=&quot;true&quot;</code> : active la traduction d&rsquo;adresses (NAT). Sans le NAT, l&rsquo;accès à Internet n&rsquo;est pas possible.</li>
+<li><code>ipv6.address=none</code> : désactive IPv6.</li>
+</ul>
+<h3 id="déploiement-des-instances">Déploiement des instances</h3>
+<p>Pour créer une instance, nous devons spécifier :</p>
+<ul>
+<li>le serveur d’images,</li>
+<li>l’image à utiliser,</li>
+<li>le nom de l’instance,</li>
+<li>le réseau auquel l’instance sera connectée.</li>
+</ul>
+<blockquote>
+<p>À noter qu’il existe de nombreux autres paramètres que vous pouvez retrouver <a href="https://linuxcontainers.org/incus/docs/main/instances/">ici</a>.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Monitoring</span>
+</span></span><span style="display:flex;"><span>incus launch images:debian/12 prometheus --network monitoring
+</span></span><span style="display:flex;"><span>incus launch images:debian/12 grafana --network monitoring
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Web</span>
+</span></span><span style="display:flex;"><span>incus launch images:debian/12 nginx --network web
+</span></span></code></pre></div><p>Ci-dessus, je lance des conteneurs basés sur l’image debian/12, issue du serveur d’images officiel d’Incus. J’associe ensuite chacun d’eux à son réseau respectif grâce à l’option <code>--network</code>.</p>
+<p>Par défaut, les instances reçoivent une adresse IP attribuée automatiquement par le réseau auquel elles sont connectées. Si ces adresses ne vous conviennent pas, il est toujours possible de configurer les interfaces réseau (NICs) des instances manuellement.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus config stop &lt;instance&gt;
+</span></span><span style="display:flex;"><span>incus config device set &lt;instance&gt; eth0 ipv4.address<span style="color:#f92672">=</span>&lt;ip_address&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># exemple</span>
+</span></span><span style="display:flex;"><span>incus config stop nginx
+</span></span><span style="display:flex;"><span>incus config device set nginx eth0 ipv4.address<span style="color:#f92672">=</span>192.168.20.2
+</span></span></code></pre></div><h3 id="exposition-des-services">Exposition des services</h3>
+<p>Dans l&rsquo;état actuel, nous n&rsquo;avons pas la possibilité d&rsquo;accéder aux services depuis le réseau local (LAN). Or, nous avons trois services à exposer :</p>
+<ul>
+<li>Prometheus sur le port 9090</li>
+<li>Grafana sur le port 3000</li>
+<li>Nginx sur le port 80</li>
+</ul>
+<p>L&rsquo;objectif est de rendre ces services accessibles depuis le LAN. Pour cela, nous allons ajouter un <strong>device de type proxy</strong> à chaque instance.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus config device add &lt;instance&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    &lt;nom_du_device&gt; proxy <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    listen<span style="color:#f92672">=</span>tcp:&lt;adresse_de_l_hôte&gt;:&lt;port_de_l_hôte&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    connect<span style="color:#f92672">=</span>tcp:&lt;adresse_du_conteneur&gt;:&lt;port_interne&gt;
+</span></span></code></pre></div><p>Configuration pour le Lab.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Exposition de Prometheus (port 9090)</span>
+</span></span><span style="display:flex;"><span>incus config device add prometheus <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    proxy proxy <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    listen<span style="color:#f92672">=</span>tcp:&lt;adresse_de_l_hôte&gt;:9090 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    connect<span style="color:#f92672">=</span>tcp:192.168.10.2:9090
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Exposition de Grafana (port 3000)</span>
+</span></span><span style="display:flex;"><span>incus config device add grafana <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    proxy proxy <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    listen<span style="color:#f92672">=</span>tcp:&lt;adresse_de_l_hôte&gt;:3000 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    connect<span style="color:#f92672">=</span>tcp:192.168.10.3:3000
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Exposition de Nginx (port 80 vers 8080 sur l&#39;hôte)</span>
+</span></span><span style="display:flex;"><span>incus config device add nginx <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    proxy proxy <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    listen<span style="color:#f92672">=</span>tcp:&lt;adresse_de_l_hôte&gt;:8080 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    connect<span style="color:#f92672">=</span>tcp:192.168.20.2:80
+</span></span></code></pre></div><h3 id="configuration-dincus-pour-le-monitoring">Configuration d&rsquo;Incus pour le monitoring</h3>
+<h4 id="exposer-le-point-de-terminaison">Exposer le point de terminaison</h4>
+<p>Afin que Prometheus puisse récupérer les métriques d&rsquo;Incus, nous devons, dans un premier temps, exposer le point de terminaison de métriques. Pour cela, il suffit d&rsquo;exécuter la commande suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus config set core.metrics_address <span style="color:#e6db74">&#34;&lt;listen_address&gt;:8443&#34;</span>
+</span></span></code></pre></div><p>Ici, l&rsquo;adresse d&rsquo;écoute correspond à l&rsquo;adresse IP du réseau <code>ovn-bridge</code>.</p>
+<blockquote>
+<p>Notez que si vous avez exposé entièrement l&rsquo;API d&rsquo;Incus (chose à éviter), vous n&rsquo;avez pas besoin d&rsquo;entrer la commande ci-dessus.</p></blockquote>
+<h4 id="création-des-certificats">Création des certificats</h4>
+<p>Comme pour l’accès à distance, Incus nécessite des certificats afin d’exposer en toute sécurité le point de terminaison des métriques. Nous avons besoin du fichier <code>server.crt</code>, qui correspond au certificat public d’Incus. Il se trouve dans le répertoire <code>/var/lib/incus/</code>.</p>
+<p>Commencez par générer une paire de clés et un certificat auto-signé :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve<span style="color:#ae81ff">\:</span>secp384r1 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -sha384 -keyout metrics.key -nodes -out metrics.crt -days <span style="color:#ae81ff">3650</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -subj <span style="color:#e6db74">&#34;/CN=metrics.local&#34;</span>
+</span></span></code></pre></div><p>Ajoutez ensuite le certificat généré dans la liste des sources de confiance pour les métriques :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus config trust add-certificate metrics.crt --type<span style="color:#f92672">=</span>metrics
+</span></span></code></pre></div><p>Créez un dossier pour les certificats dans l&rsquo;instance Prometheus, puis transférez les fichiers nécessaires :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus exec prometheus -- mkdir -p /etc/prometheus/tls
+</span></span><span style="display:flex;"><span>incus file push /var/lib/incus/server.crt prometheus/etc/prometheus/tls
+</span></span><span style="display:flex;"><span>incus file push metrics.key prometheus/etc/prometheus/tls
+</span></span><span style="display:flex;"><span>incus file push metrics.crt prometheus/etc/prometheus/tls
+</span></span></code></pre></div><p>Enfin, appliquez les bons droits à ces fichiers depuis l&rsquo;instance :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># À exécuter dans l’instance Prometheus</span>
+</span></span><span style="display:flex;"><span>chown -R prometheus<span style="color:#ae81ff">\:</span>prometheus /etc/prometheus/tls
+</span></span></code></pre></div><h3 id="configuration-de-prometheus">Configuration de Prometheus</h3>
+<p>Afin d&rsquo;installer Prometheus, vous devez :</p>
+<ul>
+<li>le télécharger et l&rsquo;installer à partir des archives officielles,</li>
+<li>en faire un service systemd (ou autre selon votre système).</li>
+</ul>
+<p>Concernant la procédure d&rsquo;installation, je vous laisse faire : il existe de nombreux tutoriels disponibles en ligne. Je vais plutôt vous montrer le contenu du fichier <code>prometheus.yml</code>.</p>
+<p>Pour que Prometheus puisse accéder aux métriques d&rsquo;Incus, vous devez ajouter les lignes suivantes dans le fichier <code>prometheus.yml</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">job_name</span>: <span style="color:#e6db74">&#39;home-lab&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">metrics_path</span>: <span style="color:#e6db74">&#39;/1.0/metrics&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">scheme</span>: <span style="color:#e6db74">&#39;https&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">targets</span>: [<span style="color:#e6db74">&#39;&lt;ip_du_ovn_bridge&gt;:8443&#39;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ca_file</span>: <span style="color:#e6db74">&#39;/etc/prometheus/tls/server.crt&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">cert_file</span>: <span style="color:#e6db74">&#39;/etc/prometheus/tls/metrics.crt&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">key_file</span>: <span style="color:#e6db74">&#39;/etc/prometheus/tls/metrics.key&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server_name</span>: <span style="color:#e6db74">&#39;&lt;nom_du_serveur_incus&gt;&#39;</span>
+</span></span></code></pre></div><p>Une fois que vous avez lancé Prometheus, vous pouvez vérifier qu&rsquo;il parvient à récupérer les métriques en vous rendant à l&rsquo;adresse suivante : <code>http://&lt;ip_de_votre_hôte&gt;:9090/targets</code></p>
+<p><img src="/posts/decouverte-incus/img/prometheus.png" alt="Image"></p>
+<h3 id="configuration-de-grafana">Configuration de Grafana</h3>
+<p>Comme pour Prometheus, je vous laisse gérer l&rsquo;installation de Grafana. Je vais simplement vous montrer comment configurer la source de données.</p>
+<p>Pour ajouter la source de données, nous devons spécifier l&rsquo;adresse de Prometheus ainsi que le port. C&rsquo;est ici qu&rsquo;intervient une fonctionnalité très pratique d&rsquo;Incus. Lorsque deux instances se trouvent dans le même sous-réseau, il n&rsquo;est pas nécessaire d&rsquo;utiliser leurs adresses IP pour qu&rsquo;elles puissent communiquer entre elles. Nous pouvons simplement utiliser le nom des instances. Cela est dû au fait qu&rsquo;Incus met en place un <code>dnsmasq</code> local.</p>
+<p>Ainsi, lors de la création de la source de données dans Grafana, il est possible d&rsquo;indiquer le nom de l&rsquo;instance Incus au lieu de son adresse IP, de la manière suivante : <code>http://prometheus:9090</code></p>
+<p><img src="/posts/decouverte-incus/img/grafana.png" alt="Image"></p>
+<p>Maintenant que la source de données a été mise en place, nous pouvons créer un nouveau tableau de bord afin d&rsquo;exploiter les métriques.</p>
+<p>Vous pouvez obtenir un aperçu des métriques disponibles dans Incus à l&rsquo;aide de la commande suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus query /1.0/metrics
+</span></span></code></pre></div><h3 id="configuration-des-acls">Configuration des ACLs</h3>
+<p>Comme je l&rsquo;ai mentionné au début, les réseaux OVN permettent de mettre en place des ACLs (listes de contrôle d&rsquo;accès) entre deux instances connectées au même réseau. Après l&rsquo;ajout d&rsquo;ACLs, Incus applique automatiquement une règle implicite qui bloque tout le trafic ne correspondant pas explicitement à une règle autorisée.</p>
+<p>C&rsquo;est ce que nous allons faire ici, en autorisant uniquement :</p>
+<ul>
+<li>le serveur Grafana à effectuer des requêtes TCP sur le port 9090 du serveur Prometheus,</li>
+<li>et le serveur Prometheus à faire des requêtes HTTP vers l&rsquo;IP du réseau <code>ovn-bridge</code>, afin de récupérer les métriques d&rsquo;Incus.</li>
+</ul>
+<p>Dans un premier temps, on crée une ACL nommée <code>monitoring</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus network acl create monitoring
+</span></span></code></pre></div><p>Ensuite, on ajoute deux règles à cette ACL :</p>
+<ol>
+<li>Autoriser le trafic TCP en provenance de Grafana (192.168.10.3) vers Prometheus (192.168.10.2) sur le port 9090 :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus network acl rule add monitoring ingress <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    protocol<span style="color:#f92672">=</span>tcp <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    source<span style="color:#f92672">=</span>192.168.10.3 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    destination<span style="color:#f92672">=</span>192.168.10.2 destination_port<span style="color:#f92672">=</span><span style="color:#ae81ff">9090</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    state<span style="color:#f92672">=</span>enabled action<span style="color:#f92672">=</span>allow
+</span></span></code></pre></div><ol start="2">
+<li>Autoriser le trafic TCP en provenance de Prometheus (192.168.10.2) vers l&rsquo;IP du réseau <code>ovn-bridge</code> (ici 10.26.205.1) sur le port 8443 :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus network acl rule add monitoring egress <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    protocol<span style="color:#f92672">=</span>tcp <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    source<span style="color:#f92672">=</span>192.168.10.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    destination<span style="color:#f92672">=</span>10.26.205.1 destination_port<span style="color:#f92672">=</span><span style="color:#ae81ff">8443</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    state<span style="color:#f92672">=</span>enabled action<span style="color:#f92672">=</span>allow
+</span></span></code></pre></div><p>Enfin, on applique cette ACL au réseau <code>monitoring</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>incus network set monitoring security.acls<span style="color:#f92672">=</span>monitoring
+</span></span></code></pre></div><p>Le conteneur Grafana ne peut plus envoyer de requêtes ICMP (ping) vers Prometheus, mais il peut toujours établir une connexion HTTP sur le port 9090.</p>
+<p>De même, Prometheus ne peut plus envoyer de pings vers l&rsquo;IP du bridge OVN, mais il peut toujours récupérer les métriques via HTTPS sur le port 8443.</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Dans ce petit lab, nous avons vu les bases d&rsquo;Incus, à savoir :</p>
+<ul>
+<li>la création de conteneurs,</li>
+<li>la création de réseaux OVN,</li>
+<li>la création d&rsquo;ACL.</li>
+</ul>
+<p>Ce n&rsquo;est qu&rsquo;une brève introduction. Incus couvre également d&rsquo;autres concepts comme les projets, les snapshots ou encore les profils (plus ou moins équivalents aux templates dans Proxmox). Sans oublier qu’Incus s’intègre plutôt bien avec des outils comme Terraform ou Ansible.</p>
+<p>J&rsquo;espère que cela vous a plu 😊</p>
+<hr>
+<h1 id="sources">Sources</h1>
+<ul>
+<li><a href="https://linuxcontainers.org/incus/docs/main/">Incus Doc</a></li>
+<li><a href="https://documentation.ubuntu.com/microcloud/v2-edge/lxd/">LXD Doc</a></li>
+</ul>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+</div>
+    <small class="footer_copyright">
+        © 2025 BluecaelO.
+        Propulsé par <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
+    </small>
+</footer><a href="#" title="Aller en haut" id="totop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960">
+    <path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197Z"/>
+</svg>
+
+</a>
+
+
+    
+
+
+
+
+
+
+    
+    <script async src="http://localhost:1313/js/main.js" ></script>
+
+    
+
+</body>
+</html>

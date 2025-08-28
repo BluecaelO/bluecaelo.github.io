@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr-fr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Créer un environement de Dev éphémère (Nix-shell &#43; Direnv) | Blog</title>
+<meta property="og:title" content="Créer un environement de Dev éphémère (Nix-shell &#43; Direnv) | Blog" />
+<meta name="twitter:title" content="Créer un environement de Dev éphémère (Nix-shell &#43; Direnv) | Blog" />
+<meta itemprop="name" content="Créer un environement de Dev éphémère (Nix-shell &#43; Direnv) | Blog" />
+<meta name="application-name" content="Créer un environement de Dev éphémère (Nix-shell &#43; Direnv) | Blog" />
+<meta property="og:site_name" content="Portfolio" />
+
+<meta name="description" content="Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère">
+<meta itemprop="description" content="Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère" />
+<meta property="og:description" content="Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère" />
+<meta name="twitter:description" content="Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère" />
+
+<meta property="og:locale" content="fr-fr" />
+<meta name="language" content="fr-fr" />
+
+  <link rel="alternate" hreflang="fr-fr" href="http://localhost:1313/posts/nix-direnv/" title="French" />
+
+
+
+
+
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2025-08-23T00:00:00Z />
+    <meta property="article:published_time" content=2025-08-23T00:00:00Z />
+    <meta property="og:url" content="http://localhost:1313/posts/nix-direnv/" />
+
+    
+    <meta property="og:article:author" content="BluecaelO" />
+    <meta property="article:author" content="BluecaelO" />
+    <meta name="author" content="BluecaelO" />
+    
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Créer un environement de Dev éphémère (Nix-shell + Direnv)",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2025-08-23",
+        "description": "Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère",
+        "wordCount":  812 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2025-08-23",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Blog"
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.148.2">
+
+    
+    <meta property="og:url" content="http://localhost:1313/posts/nix-direnv/">
+  <meta property="og:site_name" content="Blog">
+  <meta property="og:title" content="Créer un environement de Dev éphémère (Nix-shell &#43; Direnv)">
+  <meta property="og:description" content="Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère">
+  <meta property="og:locale" content="fr_fr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-23T00:00:00+00:00">
+    <meta property="article:tag" content="Nix">
+    <meta property="article:tag" content="Direnv">
+
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Créer un environement de Dev éphémère (Nix-shell &#43; Direnv)">
+  <meta name="twitter:description" content="Utilisation de Nix et de Direnv pour la création de environnement de développement éphémère">
+
+
+    
+
+    <link rel="canonical" href="http://localhost:1313/posts/nix-direnv/">
+    <link href="/style.min.2d921c18cf1ec555ffc03d59a8adc211c402c68c930c27d6a0c306ab175a8d09.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="http://localhost:1313/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+</head>
+<body data-theme = "auto" class="notransition">
+
+<script src="/js/theme.js"></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="http://localhost:1313/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Accueil</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/">
+                        Accueil
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/posts/">
+                        Articles
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        À propos
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Créer un environement de Dev éphémère (Nix-shell &#43; Direnv)</h1>
+                
+                
+                
+                <div class="post-meta">
+                    <time datetime="2025-08-23T00:00:00&#43;00:00" itemprop="datePublished"> 23 août 2025 </time>
+                </div>
+                
+            </header>
+            
+    
+    <details class="toc" ZgotmplZ>
+        <summary><b>Table des matières</b></summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#prérequis">Prérequis</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#configurer-direnv">Configurer direnv</a></li>
+        <li><a href="#création-du-fichier-shellnix">Création du fichier <code>shell.nix</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </details>
+            <div class="page-content">
+                <p><img src="/posts/nix-direnv/Billboard.svg" alt="Image"></p>
+<h2 id="introduction">Introduction</h2>
+<p>Je ne sais pas pour vous, mais j’aime avoir un environnement aussi propre que possible. Pour cela, j’utilise <strong>Nix</strong> et <strong>direnv</strong>.</p>
+<ul>
+<li>
+<p><strong>Nix</strong> me servira à :</p>
+<ul>
+<li>installer des paquets de manière éphémère ;</li>
+<li>éviter les problèmes de dépendances.</li>
+</ul>
+</li>
+<li>
+<p><strong>direnv</strong>, quant à lui, m’aidera à :</p>
+<ul>
+<li>lancer mes fichiers de configuration Nix en me déplaçant dans un répertoire spécifique.</li>
+</ul>
+</li>
+</ul>
+<p>Dans cet article, je vais vous montrer comment créer un environnement <strong>reproductible</strong> et <strong>portable</strong>, tout en limitant le nombre de commandes à taper 🦾 .</p>
+<h2 id="prérequis">Prérequis</h2>
+<ul>
+<li>Avoir un système <strong>Linux</strong> ou <strong>macOS</strong>.</li>
+<li>Si vous êtes sous <strong>Windows</strong>, vous devrez utiliser <strong>WSL</strong> ou passer par une machine virtuelle via <strong>VirtualBox</strong> ou <strong>VMware Workstation</strong>.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>L’installation est relativement simple, mais dépend de votre système.
+Par exemple, sous <strong>Fedora</strong>, vous pouvez installer <code>direnv</code> avec :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install direnv
+</span></span></code></pre></div><p>Pour ce qui est de <strong>Nix</strong>, il vous suffit d’exécuter le script proposé sur le <a href="https://nixos.org/download.html">site officiel</a>.</p>
+<h2 id="configuration">Configuration</h2>
+<h3 id="configurer-direnv">Configurer direnv</h3>
+<p>On peut faire énormément de choses avec <strong>direnv</strong>. Il est souvent utilisé pour ajouter automatiquement des variables d’environnement lorsqu’on entre dans un dossier spécifique.</p>
+<p>Ici, je vais l’utiliser pour exécuter une commande qui lancera le fichier <code>shell.nix</code>, lequel contiendra tous les paquets que je souhaite installer.</p>
+<p>Concrètement, avant chaque prompt, <strong>direnv</strong> vérifie la présence d’un fichier <code>.envrc</code> dans le dossier courant.
+Si ce fichier est trouvé, il est &ldquo;sourcé&rdquo;, ce qui signifie que :</p>
+<ul>
+<li>les variables d’environnement qu’il contient sont ajoutées au shell ;</li>
+<li>les commandes définies dans ce fichier sont exécutées.</li>
+</ul>
+<p>Dans mon cas, je vais uniquement utiliser <strong>direnv</strong> pour appeler le fichier <code>shell.nix</code>.</p>
+<p>Si vous devez déclarer des variables d’environnement, vous pouvez de le faire directement dans le fichier <code>shell.nix</code>.</p>
+<p>Ajoutez la ligne suivante à votre fichier <code>~/.bashrc</code> (ou <code>~/.zshrc</code> si vous utilisez Zsh) :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>direnv hook zsh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>  <span style="color:#75715e"># Remplacez zsh par bash si nécessaire</span>
+</span></span></code></pre></div><p>La ligne ci-dessus ajoute un <em>hook</em>.
+C’est ce qui permet à <strong>direnv</strong> de rechercher le fichier <code>.envrc</code> avant que l’invite de commande n’apparaisse.</p>
+<p>Vous pouvez maintenant créer un fichier <code>.envrc</code> dans le dossier de votre projet, et y ajouter la ligne suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use nix
+</span></span></code></pre></div><p>Cela indique à <strong>direnv</strong> d’utiliser le fichier <code>shell.nix</code> présent dans le dossier pour configurer l’environnement.
+La première fois que vous créez un <code>.envrc</code>, vous devrez l’autoriser avec :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>direnv allow
+</span></span></code></pre></div><h3 id="création-du-fichier-shellnix">Création du fichier <code>shell.nix</code></h3>
+<p>Nix est un gestionnaire de paquets fonctionnel. Chaque paquet est stocké dans le Nix store, dans son propre répertoire, et ne sera jamais modifié.
+Cela signifie également que si vous installez une autre version d’un paquet déjà présent, celle-ci aura son propre répertoire dans le Nix store.
+Ce fonctionnement permet d’éviter les problèmes de dépendances.</p>
+<p>Imaginons que je veuille installer de manière éphémère une suite de paquets Python, comme <strong>pandas</strong> et <strong>flask</strong>.
+Dans mon fichier <code>shell.nix</code>, je vais devoir ajouter les lignes suivantes :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>{ pkgs <span style="color:#f92672">?</span> <span style="color:#f92672">import</span> <span style="color:#e6db74">&lt;nixpkgs&gt;</span> {} }:  <span style="color:#75715e"># Importation du module nixpkgs</span>
+</span></span><span style="display:flex;"><span>pkgs<span style="color:#f92672">.</span>mkShell { <span style="color:#75715e"># Création du shell</span>
+</span></span><span style="display:flex;"><span> packages <span style="color:#f92672">=</span> [ <span style="color:#75715e"># Liste des packages à installer</span>
+</span></span><span style="display:flex;"><span>      (pkgs<span style="color:#f92672">.</span>python312<span style="color:#f92672">.</span>withPackages (python-pkgs: [ <span style="color:#75715e"># Installation de Python avec ses packages</span>
+</span></span><span style="display:flex;"><span>        python-pkgs<span style="color:#f92672">.</span>pandas
+</span></span><span style="display:flex;"><span>        python-pkgs<span style="color:#f92672">.</span>flask
+</span></span><span style="display:flex;"><span>      ]))
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Je vous recommande d’être le plus explicite possible sur la version de Python utilisée.
+Cela permet d’éviter les désagréments liés à des différences de version.</p></blockquote>
+<p>Maintenant, pour lancer le script, il vous suffit de vous rendre dans le répertoire dans lequel il a été créé — et c’est globalement tout 😁.
+Dans le cas où direnv ne serait pas installé, vous devriez exécuter la commande <code>nix-shell &lt;chemin vers le fichier .nix&gt;</code>.
+Ça ne paraît peut-être pas grand-chose, mais cela simplifie vraiment le quotidien : ce sont quelques secondes gagnées à chaque fois&hellip; qui finiront par s’accumuler !</p>
+<p><strong>Nix</strong> ne s’arrête pas à Python. Vous pouvez installer n’importe quel paquet disponible dans <strong>nixpkgs</strong>.</p>
+<p>Prenons un autre exemple : imaginons que je veuille installer de manière éphémère des outils comme <strong>Ansible</strong> et <strong>OpenTofu</strong> (une implémentation open-source de Terraform).
+Pour ce faire, je dois simplement écrire le fichier <code>shell.nix</code> suivant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>{ pkgs <span style="color:#f92672">?</span> <span style="color:#f92672">import</span> <span style="color:#e6db74">&lt;nixpkgs&gt;</span> {} }:  <span style="color:#75715e"># Importation du module nixpkgs</span>
+</span></span><span style="display:flex;"><span>pkgs<span style="color:#f92672">.</span>mkShell { <span style="color:#75715e"># Création du shell</span>
+</span></span><span style="display:flex;"><span>  packages <span style="color:#f92672">=</span> [ <span style="color:#75715e"># Liste des packages à installer</span>
+</span></span><span style="display:flex;"><span>    pkgs<span style="color:#f92672">.</span>opentofu
+</span></span><span style="display:flex;"><span>    pkgs<span style="color:#f92672">.</span>ansible
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Une fois que vous avez terminé d’utiliser votre environnement de développement, il vous suffit de quitter le répertoire du projet, et direnv se charge du reste.
+Les paquets installés ne seront alors plus accessibles en dehors de cet espace de travail.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Voilà qui conclut ce petit post. Ce n’est pas grand-chose : je n’ai exploré qu’une petite partie des véritables capacités de Nix.
+(Je vous conseille vivement d’y jeter un œil, même si cela peut sembler un peu complexe au début.)</p>
+<p>Nous avons donc vu :</p>
+<ul>
+<li>comment utiliser direnv pour exploiter un fichier Nix ;</li>
+<li>comment installer des paquets de manière éphémère avec un script shell.nix.</li>
+</ul>
+<p>En espérant que cela vous aura plu 😊.</p>
+<hr>
+<h1 id="sources">Sources</h1>
+<ul>
+<li><a href="https://nixos.wiki/wiki/Main_Page">Nix wiki</a></li>
+<li><a href="https://github.com/nix-community/nix-direnv">Nix Direnv</a></li>
+</ul>
+<p>Bonnus:</p>
+<ul>
+<li><a href="https://lafor.ge/nix-1/#la-philosophie-derriere-nix">Premier pas avec Nix</a></li>
+</ul>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+</div>
+    <small class="footer_copyright">
+        © 2025 BluecaelO.
+        Propulsé par <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
+    </small>
+</footer><a href="#" title="Aller en haut" id="totop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960">
+    <path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197Z"/>
+</svg>
+
+</a>
+
+
+    
+
+
+
+
+
+
+    
+    <script async src="http://localhost:1313/js/main.js" ></script>
+
+    
+
+</body>
+</html>

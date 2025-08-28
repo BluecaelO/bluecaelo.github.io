@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Blog</title>
+    <link>http://localhost:1313/pages/</link>
+    <description>Recent content in Pages on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language><atom:link href="http://localhost:1313/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>À propos</title>
+      <link>http://localhost:1313/pages/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/about/</guid>
+      
+      <description>&lt;h1 id=&#34;bien-le-bonjour-&#34;&gt;Bien le bonjour 👋&lt;/h1&gt;
+&lt;p&gt;Je suis un étudiant en IT.&lt;/p&gt;
+&lt;p&gt;Ce site a pour but de :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Présenter des sujets techniques ou technologiques que je trouve intéressants&lt;/li&gt;
+&lt;li&gt;Regrouper quelques tutoriels ou notes simples&lt;/li&gt;
+&lt;li&gt;Partager, de façon générale, des contenus liés à l&amp;rsquo;informatique&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Je suis encore débutant, donc certaines choses peuvent être incomplètes, imprécises, voire fausses.
+Merci de garder ça en tête 😊&lt;/p&gt;
+&lt;p&gt;Quoi qu’il en soit, bienvenue !&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
