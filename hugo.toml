@@ -1,5 +1,4 @@
-baseURL = 'https://example.org/'
-languageCode = 'fr'
+baseURL = 'https://bluecaelo.github.io/'
 title = 'Blog'
 theme = "hugo-blog-awesome"
 
