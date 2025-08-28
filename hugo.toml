@@ -30,7 +30,7 @@ theme = "hugo-blog-awesome"
     weight = 30
 
 [Languages.fr-fr.params]
-  sitename = "Portfolio"
+  sitename = "Blog"
   defaultColor = "auto" # set color mode: dark, light, auto
   description = "Bien le bonjour, je suis un étudiant en IT."
   mainSections = ['posts']
