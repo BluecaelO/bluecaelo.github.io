@@ -1,3 +1,46 @@
 baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+languageCode = 'fr-fr'
+title = 'Blog'
+theme = "hugo-blog-awesome"
+
+
+############################## French language ################################
+[Languages.fr-fr]
+  languageName = "French"
+  languageCode = "fr-fr"
+  contentDir = "content/fr"
+  weight = 1
+
+  [Languages.fr-fr.menu]
+  [[Languages.fr-fr.menu.main]]
+    pageRef="/"
+    name = 'Accueil'
+    url = '/'
+    weight = 10
+  [[Languages.fr-fr.menu.main]]
+    pageRef="posts"
+    name = 'Articles'
+    url = '/posts/'
+    weight = 20
+  [[Languages.fr-fr.menu.main]]
+    pageRef="about"
+    name = 'À propos'
+    url = '/about/'
+    weight = 30
+
+[Languages.fr-fr.params]
+  sitename = "Portfolio"
+  defaultColor = "auto" # set color mode: dark, light, auto
+  description = "Bien le bonjour, je suis un étudiant en IT."
+  mainSections = ['posts']
+  toc = true 
+  tocOpen = false 
+  goToTop = true 
+  rssFeedDescription = "summary"
+
+[Languages.fr-fr.params.author]
+  avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
+  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
+  intro = "BluecaelO"
+  name = "BluecaelO"
+  description = "Débutant enthousiaste en Informatique"
