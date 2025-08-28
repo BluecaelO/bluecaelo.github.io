@@ -1,4 +1,6 @@
 baseURL = 'https://bluecaelo.github.io/'
+languageCode = 'fr-fr'
+defaultContentLanguage = "fr"
 title = 'Blog'
 theme = "hugo-blog-awesome"
 
