@@ -1,6 +1,6 @@
 ---
 title: Découverte de Incus
-date: 2025-08-23
+date: 2025-08-27
 description: Cette article a pour but d'explorer et de tester Incus.
 tags:
   - Incus
