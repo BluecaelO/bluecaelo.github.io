@@ -111,9 +111,9 @@ Incus va ensuite vous demander de renseigner le token généré lors de la comma
 
 ```bash
 sudo ovs-vsctl set open_vswitch . \
-    external_ids\:ovn-remote=unix:/run/ovn/ovnsb_db.sock \
-    external_ids\:ovn-encap-type=geneve \
-    external_ids\:ovn-encap-ip=127.0.0.1
+   external_ids:ovn-remote=unix:/run/ovn/ovnsb_db.sock \
+   external_ids:ovn-encap-type=geneve \
+   external_ids:ovn-encap-ip=127.0.0.1
 ```
 
 À exécuter une seule fois, sur l'hôte.
@@ -249,7 +249,7 @@ Comme pour l’accès à distance, Incus nécessite des certificats afin d’exp
 Commencez par générer une paire de clés et un certificat auto-signé :
 
 ```bash
-openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve\:secp384r1 \
+openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:secp384r1 \
     -sha384 -keyout metrics.key -nodes -out metrics.crt -days 3650 \
     -subj "/CN=metrics.local"
 ```
@@ -273,7 +273,7 @@ Enfin, appliquez les bons droits à ces fichiers depuis l'instance :
 
 ```bash
 # À exécuter dans l’instance Prometheus
-chown -R prometheus\:prometheus /etc/prometheus/tls
+chown -R prometheus:prometheus /etc/prometheus/tls
 ```
 
 ### Configuration de Prometheus
