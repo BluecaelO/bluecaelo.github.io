@@ -176,7 +176,7 @@ Ici, je déclare une structure imbriquée. Dans cette structure, j'enregistre le
 resource "incus_network" "networks" {
   for_each = var.network_list
   name     = each.value.name
-  type     = "ovn"
+  type     = "bridge"
 
   config = {
     "ipv4.address" = each.value.ipv4Address
