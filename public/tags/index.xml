@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Blog</title>
+    <title>Tags on BluecaelO</title>
     <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on Blog</description>
+    <description>Recent content in Tags on BluecaelO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 23 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Direnv</title>
-      <link>http://localhost:1313/tags/direnv/</link>
-      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/tags/direnv/</guid>
-      
-      <description></description>
-      
-    </item>
-    
+    <lastBuildDate>Wed, 27 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Incus</title>
       <link>http://localhost:1313/tags/incus/</link>
-      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/incus/</guid>
       
@@ -32,9 +21,31 @@
     <item>
       <title>Lxc</title>
       <link>http://localhost:1313/tags/lxc/</link>
-      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/lxc/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Ovn</title>
+      <link>http://localhost:1313/tags/ovn/</link>
+      <pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/ovn/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Direnv</title>
+      <link>http://localhost:1313/tags/direnv/</link>
+      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/direnv/</guid>
       
       <description></description>
       
@@ -52,11 +63,11 @@
     </item>
     
     <item>
-      <title>Ovn</title>
-      <link>http://localhost:1313/tags/ovn/</link>
+      <title>Opentofu</title>
+      <link>http://localhost:1313/tags/opentofu/</link>
       <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/ovn/</guid>
+      <guid>http://localhost:1313/tags/opentofu/</guid>
       
       <description></description>
       

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lxc on Blog</title>
+    <title>Lxc on BluecaelO</title>
     <link>http://localhost:1313/tags/lxc/</link>
-    <description>Recent content in Lxc on Blog</description>
+    <description>Recent content in Lxc on BluecaelO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 23 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/lxc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/lxc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Découverte de Incus</title>
       <link>http://localhost:1313/posts/decouverte-incus/</link>
-      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/decouverte-incus/</guid>
       

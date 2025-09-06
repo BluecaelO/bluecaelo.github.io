@@ -3,33 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/nix-direnv/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-08-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/decouverte-incus/</loc>
+    <lastmod>2025-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/incus/</loc>
+    <lastmod>2025-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/lxc/</loc>
+    <lastmod>2025-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ovn/</loc>
+    <lastmod>2025-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/nix-direnv/</loc>
     <lastmod>2025-08-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/direnv/</loc>
     <lastmod>2025-08-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/incus/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/lxc/</loc>
+    <loc>http://localhost:1313/posts/opentofu/</loc>
     <lastmod>2025-08-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/nix/</loc>
     <lastmod>2025-08-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ovn/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/tags/opentofu/</loc>
     <lastmod>2025-08-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/pages/about/</loc>

@@ -3,12 +3,12 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">Découverte de Incus | Blog</title>
-<meta property="og:title" content="Découverte de Incus | Blog" />
-<meta name="twitter:title" content="Découverte de Incus | Blog" />
-<meta itemprop="name" content="Découverte de Incus | Blog" />
-<meta name="application-name" content="Découverte de Incus | Blog" />
-<meta property="og:site_name" content="Portfolio" />
+<title itemprop="name">Découverte de Incus | BluecaelO</title>
+<meta property="og:title" content="Découverte de Incus | BluecaelO" />
+<meta name="twitter:title" content="Découverte de Incus | BluecaelO" />
+<meta itemprop="name" content="Découverte de Incus | BluecaelO" />
+<meta name="application-name" content="Découverte de Incus | BluecaelO" />
+<meta property="og:site_name" content="Blog" />
 
 <meta name="description" content="Cette article a pour but d&#39;explorer et de tester Incus.">
 <meta itemprop="description" content="Cette article a pour but d&#39;explorer et de tester Incus." />
@@ -29,8 +29,8 @@
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:article:published_time" content=2025-08-23T00:00:00Z />
-    <meta property="article:published_time" content=2025-08-23T00:00:00Z />
+    <meta property="og:article:published_time" content=2025-08-27T00:00:00Z />
+    <meta property="article:published_time" content=2025-08-27T00:00:00Z />
     <meta property="og:url" content="http://localhost:1313/posts/decouverte-incus/" />
 
     
@@ -51,18 +51,18 @@
         "@type": "Person",
         "name": ""
         },
-        "datePublished": "2025-08-23",
+        "datePublished": "2025-08-27",
         "description": "Cette article a pour but d'explorer et de tester Incus.",
         "wordCount":  1795 ,
         "mainEntityOfPage": "True",
-        "dateModified": "2025-08-23",
+        "dateModified": "2025-08-27",
         "image": {
         "@type": "imageObject",
         "url": ""
         },
         "publisher": {
         "@type": "Organization",
-        "name": "Blog"
+        "name": "BluecaelO"
         }
     }
     </script>
@@ -72,14 +72,14 @@
 
     
     <meta property="og:url" content="http://localhost:1313/posts/decouverte-incus/">
-  <meta property="og:site_name" content="Blog">
+  <meta property="og:site_name" content="BluecaelO">
   <meta property="og:title" content="Découverte de Incus">
   <meta property="og:description" content="Cette article a pour but d&#39;explorer et de tester Incus.">
   <meta property="og:locale" content="fr_fr">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-08-23T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-08-23T00:00:00+00:00">
+    <meta property="article:published_time" content="2025-08-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-27T00:00:00+00:00">
     <meta property="article:tag" content="Incus">
     <meta property="article:tag" content="Lxc">
     <meta property="article:tag" content="Ovn">
@@ -192,7 +192,7 @@ stroke-linejoin="round" class="feather feather-home">
                 
                 
                 <div class="post-meta">
-                    <time datetime="2025-08-23T00:00:00&#43;00:00" itemprop="datePublished"> 23 août 2025 </time>
+                    <time datetime="2025-08-27T00:00:00&#43;00:00" itemprop="datePublished"> 27 août 2025 </time>
                 </div>
                 
             </header>
@@ -271,7 +271,7 @@ Contrairement à un réseau bridge, un réseau OVN permet :</p>
 <p>L&rsquo;installation dépend de votre OS ou gestionnaire de paquets. Suivez la documentation officielle : <a href="https://linuxcontainers.org/incus/docs/main/installing/#installing">Installation d&rsquo;Incus</a></p>
 <h4 id="configuration-de-base">Configuration de base</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Créer un groupe d&#39;administration pour Incus</span>
-</span></span><span style="display:flex;"><span>sudo adduser <span style="color:#ae81ff">\$</span>USER incus-admin
+</span></span><span style="display:flex;"><span>sudo adduser $USER incus-admin
 </span></span><span style="display:flex;"><span>sudo newgrp incus-admin
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialiser Incus avec la configuration minimale</span>
 </span></span><span style="display:flex;"><span>incus admin init --minimal
@@ -295,9 +295,9 @@ Je vous recommande donc de spécifier l’adresse IP d’écoute que vous souhai
 <h2 id="mise-en-place-de-linfrastructure">Mise en place de l&rsquo;infrastructure</h2>
 <h3 id="installation-et-configuration-de-ovn">Installation et configuration de OVN</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ovs-vsctl set open_vswitch . <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    external_ids<span style="color:#ae81ff">\:</span>ovn-remote<span style="color:#f92672">=</span>unix:/run/ovn/ovnsb_db.sock <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    external_ids<span style="color:#ae81ff">\:</span>ovn-encap-type<span style="color:#f92672">=</span>geneve <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    external_ids<span style="color:#ae81ff">\:</span>ovn-encap-ip<span style="color:#f92672">=</span>127.0.0.1
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   external_ids:ovn-remote<span style="color:#f92672">=</span>unix:/run/ovn/ovnsb_db.sock <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   external_ids:ovn-encap-type<span style="color:#f92672">=</span>geneve <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   external_ids:ovn-encap-ip<span style="color:#f92672">=</span>127.0.0.1
 </span></span></code></pre></div><p>À exécuter une seule fois, sur l&rsquo;hôte.</p>
 <h3 id="création-du-réseau-bridge-parent">Création du réseau bridge parent</h3>
 <p>Les réseaux OVN ont un réseau parent, qui peut être soit un réseau de type bridge, soit un réseau physique.
@@ -388,7 +388,7 @@ Dans mon cas, j&rsquo;ai personnellement créé un réseau bridge dédié.</p>
 <h4 id="création-des-certificats">Création des certificats</h4>
 <p>Comme pour l’accès à distance, Incus nécessite des certificats afin d’exposer en toute sécurité le point de terminaison des métriques. Nous avons besoin du fichier <code>server.crt</code>, qui correspond au certificat public d’Incus. Il se trouve dans le répertoire <code>/var/lib/incus/</code>.</p>
 <p>Commencez par générer une paire de clés et un certificat auto-signé :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve<span style="color:#ae81ff">\:</span>secp384r1 <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:secp384r1 <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -sha384 -keyout metrics.key -nodes -out metrics.crt -days <span style="color:#ae81ff">3650</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -subj <span style="color:#e6db74">&#34;/CN=metrics.local&#34;</span>
 </span></span></code></pre></div><p>Ajoutez ensuite le certificat généré dans la liste des sources de confiance pour les métriques :</p>
@@ -400,7 +400,7 @@ Dans mon cas, j&rsquo;ai personnellement créé un réseau bridge dédié.</p>
 </span></span><span style="display:flex;"><span>incus file push metrics.crt prometheus/etc/prometheus/tls
 </span></span></code></pre></div><p>Enfin, appliquez les bons droits à ces fichiers depuis l&rsquo;instance :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># À exécuter dans l’instance Prometheus</span>
-</span></span><span style="display:flex;"><span>chown -R prometheus<span style="color:#ae81ff">\:</span>prometheus /etc/prometheus/tls
+</span></span><span style="display:flex;"><span>chown -R prometheus:prometheus /etc/prometheus/tls
 </span></span></code></pre></div><h3 id="configuration-de-prometheus">Configuration de Prometheus</h3>
 <p>Afin d&rsquo;installer Prometheus, vous devez :</p>
 <ul>

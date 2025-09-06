@@ -1,6 +1,6 @@
 {
-    "name": "Portfolio",
-    "short_name": "Portfolio",
+    "name": "Blog",
+    "short_name": "Blog",
     "start_url": "http://localhost:1313/",
     "theme_color": "#434648",
     "background_color": "#ffffff",

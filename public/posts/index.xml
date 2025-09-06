@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Articles on Blog</title>
+    <title>Articles on BluecaelO</title>
     <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Articles on Blog</description>
+    <description>Recent content in Articles on BluecaelO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 23 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Découverte de Incus</title>
+      <link>http://localhost:1313/posts/decouverte-incus/</link>
+      <pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/decouverte-incus/</guid>
+      
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/decouverte-incus/img/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Ce lab n&amp;rsquo;a pas de but particulier. J&amp;rsquo;ai simplement entendu parler d&amp;rsquo;une technologie plutôt sympa et j&amp;rsquo;ai voulu l&amp;rsquo;essayer.
+Cette technologie, c&amp;rsquo;est &lt;strong&gt;Incus&lt;/strong&gt;. À l&amp;rsquo;instar de Docker, Incus sert à gérer des conteneurs. Cependant, il dispose de fonctionnalités plus étendues, comme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;un contrôle réseau plus complet,&lt;/li&gt;
+&lt;li&gt;la possibilité de faire tourner des conteneurs LXC, OCI ainsi que des machines virtuelles (VM),&lt;/li&gt;
+&lt;li&gt;la gestion des utilisateurs,&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour plus de détails, je vous invite à consulter la &lt;a href=&#34;https://linuxcontainers.org/incus/docs/main/&#34;&gt;documentation officielle&lt;/a&gt;.&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>Créer un environement de Dev éphémère (Nix-shell &#43; Direnv)</title>
       <link>http://localhost:1313/posts/nix-direnv/</link>
@@ -37,23 +58,19 @@
     </item>
     
     <item>
-      <title>Découverte de Incus</title>
-      <link>http://localhost:1313/posts/decouverte-incus/</link>
+      <title>Introduction à l&#39;IAC avec OpenTofu et Incus</title>
+      <link>http://localhost:1313/posts/opentofu/</link>
       <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/decouverte-incus/</guid>
+      <guid>http://localhost:1313/posts/opentofu/</guid>
       
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/decouverte-incus/img/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/opentofu/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Ce lab n&amp;rsquo;a pas de but particulier. J&amp;rsquo;ai simplement entendu parler d&amp;rsquo;une technologie plutôt sympa et j&amp;rsquo;ai voulu l&amp;rsquo;essayer.
-Cette technologie, c&amp;rsquo;est &lt;strong&gt;Incus&lt;/strong&gt;. À l&amp;rsquo;instar de Docker, Incus sert à gérer des conteneurs. Cependant, il dispose de fonctionnalités plus étendues, comme :&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;un contrôle réseau plus complet,&lt;/li&gt;
-&lt;li&gt;la possibilité de faire tourner des conteneurs LXC, OCI ainsi que des machines virtuelles (VM),&lt;/li&gt;
-&lt;li&gt;la gestion des utilisateurs,&lt;/li&gt;
-&lt;li&gt;etc.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Pour plus de détails, je vous invite à consulter la &lt;a href=&#34;https://linuxcontainers.org/incus/docs/main/&#34;&gt;documentation officielle&lt;/a&gt;.&lt;/p&gt;</description>
+&lt;h3 id=&#34;la-problématique&#34;&gt;La problématique&lt;/h3&gt;
+&lt;p&gt;Dans le lab précédent, je vous ai fait une petite démonstration d&amp;rsquo;&lt;strong&gt;Incus&lt;/strong&gt; et de ses avantages par rapport à &lt;strong&gt;Docker&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Malheureusement, cela ne veut pas dire qu&amp;rsquo;Incus peut totalement remplacer &lt;strong&gt;Docker&lt;/strong&gt; et, d&amp;rsquo;ailleurs, il n’est pas conçu pour ça.&lt;/p&gt;
+&lt;p&gt;Docker (ou encore Kubernetes) possède un avantage significatif en matière de déploiement. Cet avantage est l’approche déclarative.&lt;/p&gt;
+&lt;p&gt;Avec Docker, on utilise des fichiers &lt;code&gt;docker-compose.yml&lt;/code&gt;, qui permettent de décrire l’infrastructure souhaitée via un fichier de configuration, plutôt que de passer entièrement par la ligne de commande (approche impérative). Contrairement à Incus qui se manipule principalement de manière impérative.&lt;/p&gt;</description>
       
     </item>
     

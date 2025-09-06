@@ -61,7 +61,7 @@ L'installation dépend de votre OS ou gestionnaire de paquets. Suivez la documen
 
 ```bash
 # Créer un groupe d'administration pour Incus
-sudo adduser \$USER incus-admin
+sudo adduser $USER incus-admin
 sudo newgrp incus-admin
 # Initialiser Incus avec la configuration minimale
 incus admin init --minimal

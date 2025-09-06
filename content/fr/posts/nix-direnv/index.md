@@ -7,7 +7,7 @@ tags:
   - direnv
 ---
 
-![Image](Billboard.svg)
+![Image](img/Billboard.svg)
 ## Introduction
 
 Je ne sais pas pour vous, mais j’aime avoir un environnement aussi propre que possible. Pour cela, j’utilise **Nix** et **direnv**.

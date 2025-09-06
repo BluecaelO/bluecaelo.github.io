@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr-fr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Introduction à l&#39;IAC avec OpenTofu et Incus | BluecaelO</title>
+<meta property="og:title" content="Introduction à l&#39;IAC avec OpenTofu et Incus | BluecaelO" />
+<meta name="twitter:title" content="Introduction à l&#39;IAC avec OpenTofu et Incus | BluecaelO" />
+<meta itemprop="name" content="Introduction à l&#39;IAC avec OpenTofu et Incus | BluecaelO" />
+<meta name="application-name" content="Introduction à l&#39;IAC avec OpenTofu et Incus | BluecaelO" />
+<meta property="og:site_name" content="Blog" />
+
+<meta name="description" content="Une introduction à OpenTofu">
+<meta itemprop="description" content="Une introduction à OpenTofu" />
+<meta property="og:description" content="Une introduction à OpenTofu" />
+<meta name="twitter:description" content="Une introduction à OpenTofu" />
+
+<meta property="og:locale" content="fr-fr" />
+<meta name="language" content="fr-fr" />
+
+  <link rel="alternate" hreflang="fr-fr" href="http://localhost:1313/posts/opentofu/" title="French" />
+
+
+
+
+
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2025-09-06T00:00:00Z />
+    <meta property="article:published_time" content=2025-09-06T00:00:00Z />
+    <meta property="og:url" content="http://localhost:1313/posts/opentofu/" />
+
+    
+    <meta property="og:article:author" content="BluecaelO" />
+    <meta property="article:author" content="BluecaelO" />
+    <meta name="author" content="BluecaelO" />
+    
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Introduction à l'IAC avec OpenTofu et Incus",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2025-09-06",
+        "description": "Une introduction à OpenTofu",
+        "wordCount":  1200 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2025-09-06",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "BluecaelO"
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.148.2">
+
+    
+    <meta property="og:url" content="http://localhost:1313/posts/opentofu/">
+  <meta property="og:site_name" content="BluecaelO">
+  <meta property="og:title" content="Introduction à l&#39;IAC avec OpenTofu et Incus">
+  <meta property="og:description" content="Une introduction à OpenTofu">
+  <meta property="og:locale" content="fr_fr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-06T00:00:00+00:00">
+    <meta property="article:tag" content="Opentofu">
+
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Introduction à l&#39;IAC avec OpenTofu et Incus">
+  <meta name="twitter:description" content="Une introduction à OpenTofu">
+
+
+    
+
+    <link rel="canonical" href="http://localhost:1313/posts/opentofu/">
+    <link href="/style.min.2d921c18cf1ec555ffc03d59a8adc211c402c68c930c27d6a0c306ab175a8d09.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="http://localhost:1313/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+</head>
+<body data-theme = "auto" class="notransition">
+
+<script src="/js/theme.js"></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="http://localhost:1313/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Accueil</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/">
+                        Accueil
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/posts/">
+                        Articles
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        À propos
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Introduction à l&#39;IAC avec OpenTofu et Incus</h1>
+                
+                
+                
+                <div class="post-meta">
+                    <time datetime="2025-09-06T00:00:00&#43;00:00" itemprop="datePublished"> 6 sept. 2025 </time>
+                </div>
+                
+            </header>
+            
+    
+    <details class="toc" ZgotmplZ>
+        <summary><b>Table des matières</b></summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction-à-liac-avec-opentofu-et-incus">Introduction à l&rsquo;IaC avec OpenTofu et Incus</a>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#comment-faire-avec-incus-">Comment faire avec Incus ?</a></li>
+      </ul>
+    </li>
+    <li><a href="#prérequis">Prérequis</a></li>
+    <li><a href="#les-premières-étapes">Les premières étapes</a>
+      <ul>
+        <li><a href="#comment-fonctionne-opentofu">Comment fonctionne OpenTofu</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#configuration-du-provider">Configuration du provider</a></li>
+      </ul>
+    </li>
+    <li><a href="#mise-en-place-de-linfrastructure">Mise en place de l&rsquo;infrastructure</a>
+      <ul>
+        <li><a href="#topologie">Topologie</a></li>
+        <li><a href="#création-des-réseaux">Création des réseaux</a></li>
+        <li><a href="#création-des-instances">Création des instances</a></li>
+        <li><a href="#déploiement">Déploiement</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ul>
+</nav>
+    </details>
+            <div class="page-content">
+                <p><img src="/posts/opentofu/img/Billboard.svg" alt="Image"></p>
+<h2 id="introduction-à-liac-avec-opentofu-et-incus">Introduction à l&rsquo;IaC avec OpenTofu et Incus</h2>
+<h3 id="introduction">Introduction</h3>
+<p><strong>La problématique</strong></p>
+<p>Dans le lab précédent, je vous ai fait une petite démonstration d&rsquo;<strong>Incus</strong> et de ses avantages par rapport à <strong>Docker</strong>.</p>
+<p>Malheureusement, cela ne veut pas dire qu&rsquo;Incus peut totalement remplacer <strong>Docker</strong> et, d&rsquo;ailleurs, il n’est pas conçu pour ça.</p>
+<p><strong>Docker</strong> (tout comme <strong>Kubernetes</strong>) possède un avantage significatif en matière de déploiement. Je peux notamment citer <strong>l’approche déclarative</strong>. Avec Docker, on utilise des fichiers <code>docker-compose.yml</code> qui permettent de décrire l’infrastructure souhaitée via un fichier de configuration, plutôt que de passer entièrement par la ligne de commande (approche impérative). Contrairement à Incus qui se manipule principalement de manière impérative.</p>
+<h3 id="comment-faire-avec-incus-">Comment faire avec Incus ?</h3>
+<p>Il est possible de coupler Incus à des outils tiers pour adopter une approche déclarative.</p>
+<p>Actuellement, plusieurs options existent sur le marché. On pense notamment à <strong>Terraform</strong>, un outil largement adopté et reconnu par la communauté. Cependant, Terraform n’est plus <strong>open source</strong>.</p>
+<p>Aujourd’hui, le logiciel qui nous permet de tirer pleinement parti de la puissance de l’<strong>Infrastructure as Code (IaC)</strong>, tout en restant <strong>open source</strong>, c’est <strong>OpenTofu</strong>.</p>
+<blockquote>
+<p><strong>Pour la culture</strong></p>
+<p><strong>Terraform</strong> était autrefois <strong>open source</strong>, mais en 2023, <strong>HashiCorp</strong> (l’entreprise qui le maintient) a changé sa licence pour la <strong>BSL (Business Source License)</strong>.</p>
+<p>Face à cela, la communauté (notamment open source et Linux) a réagi rapidement. Un fork open source de Terraform a vu le jour sous le nom d’<strong>OpenTofu</strong>.</p>
+<p><strong>OpenTofu</strong> est aujourd’hui un projet soutenu par la <strong>Linux Foundation</strong>, et il adopte une licence réellement libre : la <strong>Mozilla Public License (MPL)</strong>.</p></blockquote>
+<hr>
+<h2 id="prérequis">Prérequis</h2>
+<ul>
+<li>Un serveur Incus configuré</li>
+<li>Le client Incus configuré</li>
+</ul>
+<hr>
+<h2 id="les-premières-étapes">Les premières étapes</h2>
+<h3 id="comment-fonctionne-opentofu">Comment fonctionne OpenTofu</h3>
+<p>Le flux de travail d&rsquo;OpenTofu peut être décomposé en trois grandes parties :</p>
+<ul>
+<li><strong>Write</strong> : Déclaration de l&rsquo;infrastructure souhaitée</li>
+<li><strong>Plan</strong> : Génération d&rsquo;un plan d&rsquo;exécution détaillé par OpenTofu</li>
+<li><strong>Apply</strong> : Validation et application du plan</li>
+</ul>
+<p>OpenTofu gère un système d&rsquo;état en sauvegardant les informations dans un fichier nommé <code>terraform.tfstate</code>.</p>
+<p>Ce fichier permet de garder en mémoire la composition de l&rsquo;infrastructure. Ce suivi permet à <strong>OpenTofu</strong> d&rsquo;effectuer uniquement les opérations nécessaires demandées par l&rsquo;utilisateur, en comparant l&rsquo;état actuel contenu dans le fichier <code>terraform.tfstate</code> à l&rsquo;état désiré par nos fichiers <code>.tf</code>.</p>
+<p>Pour cet article, je vais construire trois fichiers :</p>
+<ul>
+<li><code>main.tf</code> : décrit les ressources à déployer</li>
+<li><code>providers.tf</code> : contient les spécifications permettant à OpenTofu de communiquer avec Incus</li>
+<li><code>variables.tf</code> : définit les variables</li>
+</ul>
+<hr>
+<h3 id="installation">Installation</h3>
+<p>Vous pouvez l’installer directement via le gestionnaire de paquets intégré à votre système d’exploitation. Cliquez <a href="https://opentofu.org/docs/intro/install/">ici</a> pour accéder à la page d’installation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># pour fedora</span>
+</span></span><span style="display:flex;"><span>sudo dnf install opentofu
+</span></span></code></pre></div><h3 id="configuration-du-provider">Configuration du provider</h3>
+<p>Les providers sont des plugins qui permettent à OpenTofu d&rsquo;interagir avec l&rsquo;API de la cible. Dans notre cas, nous allons utiliser OpenTofu pour provisionner notre serveur Incus.</p>
+<p>Dans votre répertoire de travail, créez un fichier <code>providers.tf</code>. Une fois le fichier créé, insérez les lignes suivantes :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">terraform</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">required_providers</span> {
+</span></span><span style="display:flex;"><span>    incus <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lxc/incus&#34;</span>
+</span></span><span style="display:flex;"><span>      version <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0.4.0&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;incus&#34;</span> {<span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  # Configuration options
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Si, comme moi, vous avez déjà configuré la connexion distante avec le <strong>client Incus</strong>, vous n&rsquo;avez pas besoin de spécifier d&rsquo;options de configuration pour le provider (comme ci-dessus). En revanche, si vous n&rsquo;avez pas configuré le client Incus, vous pouvez toujours fournir les informations de connexion à OpenTofu en spécifiant les paramètres suivants :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;incus&#34;</span> {
+</span></span><span style="display:flex;"><span>  generate_client_certificates <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  accept_remote_certificate    <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">remote</span> {
+</span></span><span style="display:flex;"><span>    name    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;name of the remote&#34;</span>
+</span></span><span style="display:flex;"><span>    scheme  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https&#34;</span>
+</span></span><span style="display:flex;"><span>    address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;incus server ip address&#34;</span>
+</span></span><span style="display:flex;"><span>    token   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;token&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Pour comprendre comment obtenir le token ou configurer les clients Incus, je vous conseille de lire l&rsquo;article <a href="https://bluecaelo.github.io/posts/decouverte-incus/">Découverte de Incus</a>.</p>
+<p>Une fois les fichiers créés, initialisez l&rsquo;espace de travail et installez les plugins via la commande suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tofu init
+</span></span></code></pre></div><hr>
+<h2 id="mise-en-place-de-linfrastructure">Mise en place de l&rsquo;infrastructure</h2>
+<h3 id="topologie">Topologie</h3>
+<p>Je vais déployer l&rsquo;infrastructure suivante :</p>
+<p><img src="/posts/opentofu/img/topo.svg" alt="Image"></p>
+<p>Les opérations qui vont suivre se feront dans les fichiers <code>main.tf</code> et <code>variables.tf</code>.</p>
+<p>Dans le fichier <code>main.tf</code>, je vais déclarer les ressources. Une <strong>ressource</strong> est un objet de l&rsquo;infrastructure. Dans le cas d&rsquo;Incus, cela peut être :</p>
+<ul>
+<li>un conteneur LXC</li>
+<li>une VM</li>
+<li>un réseau</li>
+<li>un profil</li>
+<li>etc.</li>
+</ul>
+<hr>
+<h3 id="création-des-réseaux">Création des réseaux</h3>
+<p>Mes réseaux <strong>Bridge</strong> ont globalement la même configuration. La seule différence réside dans leur sous-réseau respectif. Je peux donc utiliser une <strong>boucle</strong> pour automatiser leur création.</p>
+<p>Dans le fichier <code>variables.tf</code>, je vais déclarer les <strong>attributs de chaque réseau</strong>, afin d&rsquo;éviter de surcharger le fichier <code>main.tf</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;network_list&#34;</span> {
+</span></span><span style="display:flex;"><span>  default <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    &#34;monitoring_network&#34; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;monitoring&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv4Address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;192.168.10.1/24&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv6Address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv4Nat     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &#34;web_network&#34; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;web&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv4Address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;192.168.20.1/24&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv6Address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv4Nat     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ici, je déclare une structure imbriquée. Dans cette structure, j&rsquo;enregistre les paramètres de mes réseaux. C&rsquo;est extrêmement pratique, car cela me permet d&rsquo;alléger la lecture du fichier <code>main.tf</code> et de faire des modifications rapides.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#75715e"># Dans le fichier main.tf
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Création des réseaux Bridges
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;incus_network&#34; &#34;networks&#34;</span> {
+</span></span><span style="display:flex;"><span>  for_each <span style="color:#f92672">=</span> <span style="color:#66d9ef">var</span>.<span style="color:#66d9ef">network_list</span>
+</span></span><span style="display:flex;"><span>  name     <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">name</span>
+</span></span><span style="display:flex;"><span>  type     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ovn&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    &#34;ipv4.address&#34; <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">ipv4Address</span>
+</span></span><span style="display:flex;"><span>    &#34;ipv4.nat&#34;     <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">ipv4Nat</span>
+</span></span><span style="display:flex;"><span>    &#34;ipv6.address&#34; <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">ipv6Address</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ici, je parcours ma structure avec un <code>for_each</code> afin de créer mes réseaux. Cela rend le fichier extensible, car je peux simplement ajouter des entrées à ma structure <code>network_list</code> et j&rsquo;aurai le nombre de réseaux que je désire.</p>
+<hr>
+<h3 id="création-des-instances">Création des instances</h3>
+<p>Pour créer nos instances, nous allons opérer de la même manière que pour la création de réseaux. Je vais donc, dans un premier temps, créer une structure dans le fichier <code>variables.tf</code> afin de fournir les informations utiles à la création de mes instances.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;instance_list&#34;</span> {
+</span></span><span style="display:flex;"><span>  default <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    &#34;prometheus&#34; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;prometheus&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv4Address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;192.168.10.2&#34;</span>
+</span></span><span style="display:flex;"><span>      network     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;monitoring&#34;</span>
+</span></span><span style="display:flex;"><span>      image       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;images:debian/12&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    &#34;grafana&#34; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;grafana&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv4Address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;192.168.10.3&#34;</span>
+</span></span><span style="display:flex;"><span>      network     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;monitoring&#34;</span>
+</span></span><span style="display:flex;"><span>      image       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;images:debian/12&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &#34;nginx&#34; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nginx&#34;</span>
+</span></span><span style="display:flex;"><span>      ipv4Address <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;192.168.20.2&#34;</span>
+</span></span><span style="display:flex;"><span>      network     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;web&#34;</span>
+</span></span><span style="display:flex;"><span>      image       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;images:debian/12&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Puis, dans le fichier <code>main.tf</code>, je vais donner les spécifications des ressources et indiquer à OpenTofu qu&rsquo;il doit parcourir la structure <code>instance_list</code> pour créer les instances.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;incus_instance&#34; &#34;monitoring&#34;</span> {
+</span></span><span style="display:flex;"><span>  for_each <span style="color:#f92672">=</span> <span style="color:#66d9ef">var</span>.<span style="color:#66d9ef">instance_list</span>
+</span></span><span style="display:flex;"><span>  name     <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">name</span>
+</span></span><span style="display:flex;"><span>  image    <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">image</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">device</span> {
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eth0&#34;</span>
+</span></span><span style="display:flex;"><span>    type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nic&#34;</span>
+</span></span><span style="display:flex;"><span>    properties <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      &#34;network&#34;      <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">network</span>
+</span></span><span style="display:flex;"><span>      &#34;ipv4.address&#34; <span style="color:#f92672">=</span> <span style="color:#66d9ef">each</span>.<span style="color:#66d9ef">value</span>.<span style="color:#66d9ef">ipv4Address</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Le paramètre <code>device</code> contient la configuration de la carte réseau de mon instance.</p></blockquote>
+<h3 id="déploiement">Déploiement</h3>
+<p>Pour déployer l&rsquo;infrastructure, il faut exécuter la commande :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tofu apply
+</span></span></code></pre></div><p>La commande <code>tofu apply</code> affiche le plan d&rsquo;exécution par défaut avant de demander une confirmation. Il n&rsquo;est donc pas strictement nécessaire d&rsquo;exécuter <code>tofu plan</code> au préalable. Si vous voulez uniquement consulter les changements, exécutez la commande <code>tofu plan</code>.</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p><strong>OpenTofu</strong> est un outil puissant qui transforme la gestion de votre infrastructure. Grâce à son approche déclarative, il offre un gain de temps considérable et une grande flexibilité en rendant le déploiement et les modifications de votre infrastructure reproductibles et faciles à gérer.</p>
+<p>Je n&rsquo;ai fait qu&rsquo;effleurer les possibilités offertes par le provider Incus et OpenTofu en général. Pour explorer toutes les fonctionnalités, je vous encourage vivement à consulter la documentation officielle d&rsquo;OpenTofu. Il est également compatible avec de nombreux autres environnements, comme Proxmox ou AWS. Pour découvrir la liste complète des providers, cliquez <a href="https://registry.terraform.io/">ici</a>.</p>
+<hr>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://opentofu.org/docs/intro/install/">OpenTofu Docs</a></li>
+<li><a href="https://linuxcontainers.org/incus/docs/main/">Incus Docs</a></li>
+</ul>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+</div>
+    <small class="footer_copyright">
+        © 2025 BluecaelO.
+        Propulsé par <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
+    </small>
+</footer><a href="#" title="Aller en haut" id="totop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960">
+    <path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197Z"/>
+</svg>
+
+</a>
+
+
+    
+
+
+
+
+
+
+    
+    <script async src="http://localhost:1313/js/main.js" ></script>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Opentofu on BluecaelO</title>
+    <link>http://localhost:1313/tags/opentofu/</link>
+    <description>Recent content in Opentofu on BluecaelO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 23 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/opentofu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction à l&#39;IAC avec OpenTofu et Incus</title>
+      <link>http://localhost:1313/posts/opentofu/</link>
+      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/opentofu/</guid>
+      
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/opentofu/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;h3 id=&#34;la-problématique&#34;&gt;La problématique&lt;/h3&gt;
+&lt;p&gt;Dans le lab précédent, je vous ai fait une petite démonstration d&amp;rsquo;&lt;strong&gt;Incus&lt;/strong&gt; et de ses avantages par rapport à &lt;strong&gt;Docker&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Malheureusement, cela ne veut pas dire qu&amp;rsquo;Incus peut totalement remplacer &lt;strong&gt;Docker&lt;/strong&gt; et, d&amp;rsquo;ailleurs, il n’est pas conçu pour ça.&lt;/p&gt;
+&lt;p&gt;Docker (ou encore Kubernetes) possède un avantage significatif en matière de déploiement. Cet avantage est l’approche déclarative.&lt;/p&gt;
+&lt;p&gt;Avec Docker, on utilise des fichiers &lt;code&gt;docker-compose.yml&lt;/code&gt;, qui permettent de décrire l’infrastructure souhaitée via un fichier de configuration, plutôt que de passer entièrement par la ligne de commande (approche impérative). Contrairement à Incus qui se manipule principalement de manière impérative.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

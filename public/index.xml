@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Blog</title>
+    <title>Home on BluecaelO</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content in Home on Blog</description>
+    <description>Recent content in Home on BluecaelO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 23 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction à l&#39;IAC avec OpenTofu et Incus</title>
+      <link>http://localhost:1313/posts/opentofu/</link>
+      <pubDate>Sat, 06 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/opentofu/</guid>
+      
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/opentofu/img/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction-à-liac-avec-opentofu-et-incus&#34;&gt;Introduction à l&amp;rsquo;IaC avec OpenTofu et Incus&lt;/h2&gt;
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;La problématique&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Dans le lab précédent, je vous ai fait une petite démonstration d&amp;rsquo;&lt;strong&gt;Incus&lt;/strong&gt; et de ses avantages par rapport à &lt;strong&gt;Docker&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Malheureusement, cela ne veut pas dire qu&amp;rsquo;Incus peut totalement remplacer &lt;strong&gt;Docker&lt;/strong&gt; et, d&amp;rsquo;ailleurs, il n’est pas conçu pour ça.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Docker&lt;/strong&gt; (tout comme &lt;strong&gt;Kubernetes&lt;/strong&gt;) possède un avantage significatif en matière de déploiement. Je peux notamment citer &lt;strong&gt;l’approche déclarative&lt;/strong&gt;. Avec Docker, on utilise des fichiers &lt;code&gt;docker-compose.yml&lt;/code&gt; qui permettent de décrire l’infrastructure souhaitée via un fichier de configuration, plutôt que de passer entièrement par la ligne de commande (approche impérative). Contrairement à Incus qui se manipule principalement de manière impérative.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Découverte de Incus</title>
+      <link>http://localhost:1313/posts/decouverte-incus/</link>
+      <pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/decouverte-incus/</guid>
+      
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/decouverte-incus/img/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Ce lab n&amp;rsquo;a pas de but particulier. J&amp;rsquo;ai simplement entendu parler d&amp;rsquo;une technologie plutôt sympa et j&amp;rsquo;ai voulu l&amp;rsquo;essayer.
+Cette technologie, c&amp;rsquo;est &lt;strong&gt;Incus&lt;/strong&gt;. À l&amp;rsquo;instar de Docker, Incus sert à gérer des conteneurs. Cependant, il dispose de fonctionnalités plus étendues, comme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;un contrôle réseau plus complet,&lt;/li&gt;
+&lt;li&gt;la possibilité de faire tourner des conteneurs LXC, OCI ainsi que des machines virtuelles (VM),&lt;/li&gt;
+&lt;li&gt;la gestion des utilisateurs,&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour plus de détails, je vous invite à consulter la &lt;a href=&#34;https://linuxcontainers.org/incus/docs/main/&#34;&gt;documentation officielle&lt;/a&gt;.&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>Créer un environement de Dev éphémère (Nix-shell &#43; Direnv)</title>
       <link>http://localhost:1313/posts/nix-direnv/</link>
@@ -14,7 +52,7 @@
       
       <guid>http://localhost:1313/posts/nix-direnv/</guid>
       
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/nix-direnv/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/nix-direnv/img/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Je ne sais pas pour vous, mais j’aime avoir un environnement aussi propre que possible. Pour cela, j’utilise &lt;strong&gt;Nix&lt;/strong&gt; et &lt;strong&gt;direnv&lt;/strong&gt;.&lt;/p&gt;
 &lt;ul&gt;
@@ -33,27 +71,6 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Dans cet article, je vais vous montrer comment créer un environnement &lt;strong&gt;reproductible&lt;/strong&gt; et &lt;strong&gt;portable&lt;/strong&gt;, tout en limitant le nombre de commandes à taper 🦾 .&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Découverte de Incus</title>
-      <link>http://localhost:1313/posts/decouverte-incus/</link>
-      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/posts/decouverte-incus/</guid>
-      
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/decouverte-incus/img/Billboard.svg&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Ce lab n&amp;rsquo;a pas de but particulier. J&amp;rsquo;ai simplement entendu parler d&amp;rsquo;une technologie plutôt sympa et j&amp;rsquo;ai voulu l&amp;rsquo;essayer.
-Cette technologie, c&amp;rsquo;est &lt;strong&gt;Incus&lt;/strong&gt;. À l&amp;rsquo;instar de Docker, Incus sert à gérer des conteneurs. Cependant, il dispose de fonctionnalités plus étendues, comme :&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;un contrôle réseau plus complet,&lt;/li&gt;
-&lt;li&gt;la possibilité de faire tourner des conteneurs LXC, OCI ainsi que des machines virtuelles (VM),&lt;/li&gt;
-&lt;li&gt;la gestion des utilisateurs,&lt;/li&gt;
-&lt;li&gt;etc.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Pour plus de détails, je vous invite à consulter la &lt;a href=&#34;https://linuxcontainers.org/incus/docs/main/&#34;&gt;documentation officielle&lt;/a&gt;.&lt;/p&gt;</description>
       
     </item>
     
