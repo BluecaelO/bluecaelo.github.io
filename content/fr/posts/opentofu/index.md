@@ -1,5 +1,5 @@
 ---
-title: Introduction à l'IAC avec OpenTofu et Incus
+title: Introduction à l'IaC avec OpenTofu et Incus
 date: 2025-09-06
 description: Une introduction à OpenTofu
 tags:
@@ -7,11 +7,11 @@ tags:
 ---
 ![Image](img/Billboard.svg)
 
-## Introduction à l'IaC avec OpenTofu et Incus
 
-### Introduction
 
-**La problématique**
+## Introduction
+
+### La problématique
 
 Dans le lab précédent, je vous ai fait une petite démonstration d'**Incus** et de ses avantages par rapport à **Docker**.
 
