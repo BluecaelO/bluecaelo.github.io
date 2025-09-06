@@ -256,7 +256,7 @@ La commande `tofu apply` affiche le plan d'exécution par défaut avant de deman
 
 **OpenTofu** est un outil puissant qui transforme la gestion de votre infrastructure. Grâce à son approche déclarative, il offre un gain de temps considérable et une grande flexibilité en rendant le déploiement et les modifications de votre infrastructure reproductibles et faciles à gérer.
 
-Je n'ai fait qu'effleurer les possibilités offertes par le provider Incus et OpenTofu en général. Pour explorer toutes les fonctionnalités, je vous encourage vivement à consulter la documentation officielle d'OpenTofu. Il est également compatible avec de nombreux autres environnements, comme Proxmox ou AWS. Pour découvrir la liste complète des providers, cliquez [ici](https://registry.terraform.io/).
+Je n'ai fait qu'effleurer les possibilités offertes par le provider Incus et OpenTofu en général. Pour explorer toutes les fonctionnalités, je vous encourage vivement à consulter la documentation officielle d'OpenTofu. Il est également compatible avec de nombreux autres environnements, comme Proxmox ou AWS. Pour découvrir la liste complète des providers, cliquez [ici](https://search.opentofu.org/providers).
 
 -----
 
