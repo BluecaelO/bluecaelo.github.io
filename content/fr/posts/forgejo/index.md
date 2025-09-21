@@ -1,5 +1,5 @@
 ---
-title: Forgejo une alternative Opensource à Github
+title: Forgejo : une alternative Open‑Source à GitHub
 date: 2025-09-21
 description: Une introduction à Forgejo
 tags:
@@ -12,9 +12,7 @@ tags:
 
 ### Objectif
 
-Bonjour à tous 😁.
-
-Aujourd'hui, l'objectif est de tester Forgejo en automatisant le déploiement de code OpenTofu que j'ai réalisé dans l'article [Introduction à l'IaC](https://bluecaelo.github.io/posts/opentofu/) en créant un **workflow**.
+L’objectif de cet article est de présenter Forgejo tout en illustrant la mise en place d’un pipeline CI/CD permettant d’automatiser le déploiement d’infrastructure avec OpenTofu.
 
 ### Prérequis
 
@@ -26,63 +24,60 @@ Aujourd'hui, l'objectif est de tester Forgejo en automatisant le déploiement de
 
 ### Présentation
 
-Offrir une alternative **open source** à GitHub tout en proposant un environnement similaire, c'est le leitmotiv de Forgejo.
 
-Il se démarque par sa **simplicité de maintenance**. Si des modifications sont nécessaires, il suffit de changer les paramètres du fichier `app.ini`. De plus, il est très léger et principalement écrit en **Go**.
+Forgejo propose une alternative **open‑source** à GitHub, offrant une interface comparable tout en restant très légère grâce à son implémentation en **Go**. La maintenance se résume généralement à la modification du fichier de configuration `app.ini`.
 
-**Pourquoi choisir Forgejo ?**
+**Pourquoi choisir Forgejo ?**
 
-Si vous hésitez, posez-vous les questions suivantes :
+Considérez les critères suivants :
 
-  - Je souhaite une solution **open source** qui le reste ?
-  - Je souhaite une solution **easy to maintain** ?
-  - Je souhaite une solution qui **écoute sa communauté** ?
-  - Je veux faire du **CI/CD** ?
+  - Besoin d’une solution **open‑source** ?  
+  - Souhait d’une plateforme **facile à maintenir** ?  
+  - Importance accordée à une communauté active ?  
+  - Nécessité d’un environnement **CI/CD** intégré.
 
-Si vous avez répondu "oui" à ces questions, alors Forgejo est la solution.
+Si ces points correspondent à vos exigences, Forgejo constitue une option pertinente.
 
 ### L'architecture de Forgejo
 
-Forgejo est composé de deux éléments principaux :
+Forgejo repose sur deux composants majeurs :
 
-  - **The Forgejo server :** Il est en charge de stocker nos **Git repositories** et constitue le cerveau derrière nos automatisations.
-  - **The runners :** Leur rôle principal est d'exécuter les tâches de **build**, de **test** ou de **deployment** qui leur sont assignées par le serveur Forgejo.
+1. **Serveur Forgejo** – Stocke les dépôts Git et orchestre les automatisations.
+2. **Runners** – Exécutent les tâches de **build**, **test** ou **deployment** qui leur sont assignées.
 
 ### Forgejo Actions
 
-Forgejo Actions est une plateforme de **CI/CD**. Elle permet d'automatiser des tâches telles que le **build**, les **unit tests** ou le **deployment** en **production**. Son architecture repose sur plusieurs éléments :
+Forgejo Actions fournit la couche CI/CD. Les concepts clés sont :
 
-  - **Workflows** : Les workflows sont une succession de **jobs** (tâches) définis dans un fichier `.yml`. Ils sont déclenchés suite à un **event** dans le **repository** ou manuellement si nécessaire.
-  - **Jobs** : Les jobs sont un ensemble d'étapes (**steps**) qui s'exécutent sur le même **executor**. Les **steps** s'exécutent dans l'ordre indiqué dans le fichier `.yml`.
-  - **Events** : Les **events** sont des activités du **repository** qui déclenchent les **workflows**. Il peut s'agir, par exemple, d'une **pull request** ou d'un **merge**. Pour consulter la liste des **events** disponibles, cliquez [ici](https://forgejo.org/docs/latest/user/actions/reference/#jobsjob_idif).
+- **Workflows** – Fichiers `.yml` décrivant une séquence de **jobs** déclenchés par un **event** (push, pull‑request, etc.).
+- **Jobs** – Ensemble d’étapes (**steps**) exécutées sur le même **executor**.
+- **Events** – Actions du dépôt qui déclenchent les workflows. La liste complète des événements est disponible [ici](https://forgejo.org/docs/latest/user/actions/reference/#jobsjob_idif).
 
 -----
 
 ## **Installation et Configuration**
 
-### Création d'une instance Forgejo
+### Création d’une instance Forgejo
 
-```
+```bash
 incus launch images:debian/12 forgejo
 ```
 
-Dans l'instance, il faut installer les paquets suivants :
+Dans l’instance, j’installe les paquets requis :
 
-  - openssh-server
-  - gpg
-  - wget
+- `openssh-server`
+- `gpg`
+- `wget`
 
-<!-- end list -->
-
-```
+```bash
 incus exec forgejo -- apt install openssh-server gpg wget
 ```
 
 ### Installation de Forgejo
 
-L'installation de Forgejo est très bien guidée. Vous pouvez suivre la [documentation officielle](https://forgejo.org/docs/latest/admin/installation/binary/) sans crainte.
+L'installation de Forgejo est très bien guidée. Vous pouvez suivre la [documentation officielle](https://forgejo.org/docs/latest/admin/installation/binary/).
 
-Pour ma part, je vais le déployer avec une **database SQLite** directement intégrée. Sachez que Forgejo supporte également d'autres **databases**, comme :
+Pour ma part, je l'ai déployé avec une **database SQLite** directement intégrée. Sachez que Forgejo supporte également d'autres **databases**, comme :
 
   - MySQL
   - PostgreSQL
@@ -102,31 +97,33 @@ Pour exposer Forgejo, j'ai ajouté des **devices** de type `proxy` qui vont tran
 
 Pour la redirection HTTP :
 
-```
+```bash
 incus config device add forgejo http-proxy proxy listen=tcp:<Ip de l'hôte Incus>:3000 connect=tcp:<Ip de l'instance forgejo>:3000
 ```
 
 Pour la redirection SSH :
 
-```
+```bash
 incus config device add forgejo ssh-proxy proxy listen=tcp:<Ip de l'hôte Incus>:222 connect=tcp:<Ip de l'instance forgejo>:22
 ```
 
 ### Première connexion
 
-Une fois que toutes les étapes d'installation sont terminées, vous pouvez vous rendre à l'URL suivante : `http://<ip de votre hôte>:3000`.
+Une fois toutes les étapes d’installation terminées, l’accès à l’interface de Forgejo se fait via l’URL suivante : `http://<IP_de_votre_hôte>:3000`.
 
-Lors de votre première connexion, Forgejo vous demandera de spécifier des paramètres tels que le port SSH ou le port HTTP.
+Lors de la première connexion, Forgejo vous demande de préciser des paramètres tels que le port SSH ou le port HTTP.
 
-> Vous pouvez modifier à tout moment les paramètres de Forgejo dans le fichier `/etc/forgejo/app.ini`.
+>Il est possible de modifier à tout moment les paramètres de Forgejo dans le fichier `/etc/forgejo/app.ini`.
 
-L'option `Disable self-registration` vous permet de restreindre la création de compte à l'administrateur. Cette option n'est valide que si vous créez un administrateur. La création de ce dernier peut se faire dans la section `adminstrator account settings` de la page.
+L’option Disable `self‑registration` permet de restreindre la création de comptes à l’administrateur. Cette option n’est valable que si un compte administrateur a déjà été créé. La création du compte administrateur s’effectue dans la section `Administrator account settings` de la page d’administration.
+
 
 ### Configuration SSH
 
-Pour ajouter une **SSH key** à Forgejo, il vous suffit de cliquer sur votre profil, puis d'aller dans **Settings** \> **SSH/GPG Keys** \> **Manage SSH Keys**.
+Pour ajouter une clé SSH à Forgejo, il suffit de cliquer sur le profil de l’utilisateur actuel, puis de se rendre dans `Settings > SSH/GPG Keys > Manage SSH Keys`.
 
-Pour la configuration de **SSH**, je vous recommande de lire la [page suivante](https://docs.codeberg.org/security/ssh-key/), qui saura vous expliquer bien mieux que moi comment utiliser les **SSH keys**.
+Pour la configuration de SSH, je vous recommande de lire la  [page suivante](https://docs.codeberg.org/security/ssh-key/) qui explique bien mieux que moi comment utiliser les clés SSH.
+
 
 -----
 
@@ -134,77 +131,80 @@ Pour la configuration de **SSH**, je vous recommande de lire la [page suivante](
 
 ### Création du dépôt
 
-La première étape est la création du **repository** dans lequel nous allons stocker nos fichiers :
+La première étape consiste à créer le **repository** dans lequel nous allons stocker nos fichiers :
 
-  - main.tf
-  - varaibles.tf
-  - provider.tf
+- `main.tf`
+- `variables.tf`
+- `provider.tf`
 
->OpenTofu stocke ses états dans un fichier `terraform.tfstate`. Pour éviter que ce fichier soit enregistré sur notre **repository**, il est nécessaire de créer un `.gitignore`.
+> OpenTofu stocke son état dans le fichier `terraform.tfstate`. Pour éviter que ce fichier ne soit versionné dans le **repository**, il faut créer un fichier `.gitignore` qui exclut les fichiers d’état.
 
-Pour ce faire, il nous faut cocher l'option `Initialiser le dépôt` et choisir le fichier `.gitignore` prédéfini pour Terraform.
+Pour ce faire, cochez l’option **« Initialiser le dépôt »** et choisissez le modèle `.gitignore` pré‑défini pour Terraform.
 
 ![Image](img/img1.png)
 
 ### Les Runners
 
-#### Création de l'instance OpenTofu
+#### Création de l’instance OpenTofu
 
-Je vais ici créer une instance qui sera en charge d'exécuter mon code OpenTofu.
+Je crée ici une instance qui sera chargée d’exécuter mon code OpenTofu.
 
+```bash
+# Lancement de l’instance 
+incus launch images:debian/12 opentofu 
+
+# Installation des dépendances nécessaires 
+incus exec opentofu -- apt install gpg curl wget jq nodejs
 ```
-incus launch images:debian/12 opentofu
-incus exec opentofu -- apt install gpg curl wget gpg jq nodejs
-```
 
-> J'ai besoin de **Node.js** ici, car mon **workflow** fait appel à des **actions** qui en dépendent. Le reste des paquets servira à l'installation du **runner**.
+> J’ai besoin de **Node.js** ici, car mon **workflow** fait appel à des **actions** qui en dépendent. Le reste des paquets sert à l’installation du **runner**.
 
-Puis, installez OpenTofu comme indiqué dans la [documentation officielle](https://opentofu.org/docs/intro/install/deb/).
+Ensuite, j’installe OpenTofu comme indiqué dans la [documentation officielle](https://opentofu.org/docs/intro/install/deb/).
 
 #### Installation et configuration du Runner
 
-Une fois l'instance créée, il faut installer le **runner**. Pour ce faire, vous pouvez suivre la [documentation officielle](https://forgejo.org/docs/latest/admin/actions/runner-installation/#binary-installation). Dans mon cas, j'ai installé le **runner** via le **binary** et non par l'**image OCI**.
+Une fois l’instance créée, il faut installer le **runner**. La procédure est décrite dans la [documentation officielle](https://forgejo.org/docs/latest/admin/actions/runner-installation/#binary-installation) . Dans cet exemple, le **runner** a été installé via le **binaire** plutôt qu’avec l’**image OCI**.
 
-Par la suite, il nous faut connecter le **runner** à Forgejo en utilisant la commande `forgejo-runner register`. Une fois la commande exécutée, il vous sera demandé :
+Ensuite, le **runner** doit se connecter à Forgejo avec la commande `forgejo-runner register`. Après son exécution, les informations suivantes sont requises :
 
-  - **Le lien vers l'API de Forgejo :** par exemple, `http://<ip>:3000/`.
-  - **The token :** qui se trouve dans les paramètres du **repository**, sous `Actions` \> `Runners` \> `Create a new runner`.
-  - **Le nom du runner :** il prend par défaut le nom de l'hôte.
-  - **Les labels :** ils sont utilisés pour décrire le type d'environnement nécessaire à l'exécution des tâches. Pour plus d'informations, consultez la [page suivante](https://forgejo.org/docs/latest/admin/actions/#choosing-labels).
+- **Lien vers l’API de Forgejo** : par exemple, `http://<ip>:3000/`.
+- **Token** : disponible dans les paramètres du **repository**, sous `Actions → Runners → Create a new runner`.
+- **Nom du runner** : repris par défaut le nom de l’hôte.
+- **Labels** : précisent le type d’environnement nécessaire à l’exécution des tâches. Des informations complémentaires sont disponibles sur la [page suivante](https://forgejo.org/docs/latest/admin/actions/#choosing-labels).
 
-Dans mon cas, je veux que les **actions** soient réalisées directement dans le **shell** de mon instance OpenTofu. Je vais donc utiliser un **label** de type `host`.
+Pour que les **actions** s’exécutent directement dans le **shell** de l’instance OpenTofu, un **label** de type `host` est nécessaire.
 
-> Par défaut, si l'on ne spécifie pas le type de **label** à `host`, le **runner** utilisera **Docker**. Pour déclarer le type, il faut procéder de la manière suivante : `<label>:host`.
+> Par défaut, si le type de **label** n’est pas indiqué, le **runner** utilise **Docker**. Pour forcer l’utilisation du shell, indiquer explicitement : `<label>:host`.
 
-Une fois que le **runner** est enregistré, on peut le lancer. Je l'ai lancé sous la forme d'un **service**, comme vous pouvez le voir [ici](https://forgejo.org/docs/latest/admin/actions/runner-installation/#running-as-a-systemd-service). Dans le fichier `forgejo-runner.service`, supprimez la ligne `After=docker.service`.
+Une fois le **runner** enregistré, le lancer en tant que **service systemd** (voir les instructions détaillées [ici](https://forgejo.org/docs/latest/admin/actions/runner-installation/#running-as-a-systemd-service)). Dans le fichier `forgejo-runner.service`, la ligne `After=docker.service` peut être supprimée.
 
-Si tout se passe bien, le **runner** devrait être visible comme ci-dessous.
+Le **runner** doit alors apparaître comme sur la capture d’écran ci‑dessous.
 
 
 ![Image](img/img2.png)
 
 ### Les Secrets
 
-Dans les paramètres du **repository**, sous la section `Actions` \> `Secrets`, vous pouvez déclarer des **secrets**.
+Dans les paramètres du **repository**, sous la section `Actions > Secrets`, on déclare des **secrets**.
 
-Les **secrets** permettent de stocker des mots de passe ou des **tokens** pour l'utilisation dans le **workflow**. Ils sont chiffrés et stockés dans la **database**.
+Les **secrets** permettent de stocker des mots de passe ou des **tokens** destinés à être utilisés dans le **workflow**. Ils sont chiffrés et conservés dans la **base de données**.
 
-Les **secrets** sont stockés sous forme de paires **key-value** et sont appelés dans le **workflow** de la manière suivante : `${{ secrets.KEY }}`.
+Les **secrets** sont enregistrés sous forme de paires **clé‑valeur** et sont invoqués dans le **workflow** de la manière suivante : `${{ secrets.CLE }}`.
 
-Les **secrets** nous serviront à stocker le **token** d'accès à Incus.
+Ces **secrets** serviront notamment à stocker le **token** d’accès à Incus.
 
 ![Image](img/img3.png)
 
 
 ### Création du workflow
 
-Commençons par vérifier que `Actions` est bien activé. Pour cela, allez dans les paramètres du **repository**, sous la section **`Fonctionnalités`** > **`Vue générale`**.
+Pour permettre l’exécution des workflows, le paramètre **Actions** doit être activé. Vous le trouverez dans les paramètres du **repository**, sous la section `Fonctionnalités > Vue générale`.
 
 ![Image](img/img5.png)
 
-Dans notre **local repository**, nous allons créer un fichier `.forgejo/workflows/opentofu.yaml` qui indiquera les étapes du **workflow**.
+Dans le **repository local**, j’ai créé un fichier `.forgejo/workflows/opentofu.yaml` qui décrit les étapes du **workflow**.
 
-Mon objectif est de lancer mon **workflow** à chaque **push**.
+Mon objectif est de lancer ce **workflow** à chaque **push**.
 
 ```yaml
 on: [push] # Le workflow se lance à chaque "push" sur le repository.
@@ -217,7 +217,7 @@ jobs:
     runs-on: opentofu # Ce job sera exécuté sur un runner "opentofu".
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # Récupère le source code du repository pour le runner.
+        uses: actions/checkout@v4 # Récupère le code source du repository pour le runner.
       
       - name: Init OpenTofu # Initialise le projet OpenTofu.
         run: tofu init
@@ -244,10 +244,19 @@ jobs:
 
 ## **Conclusion**
 
-C'est ainsi que s'achèvent mes premiers pas avec Forgejo. Il y a encore beaucoup de choses à améliorer, par exemple la mise en place du **HTTPS** ou la gestion des fichiers `tfstate`. En effet, contrairement à GitLab qui propose son propre **backend** pour gérer ces fichiers, Forgejo ne le fait pas. Il faudrait donc déployer un **backend** à part, comme MinIO, pour les gérer.
+Ces premiers pas avec Forgejo démontrent que la plateforme constitue déjà une base solide pour la mise en œuvre de pipelines CI/CD. Plusieurs axes d’amélioration restent néanmoins à explorer :
 
-Mais, malgré cela, Forgejo est vraiment une solution solide. La configuration des **workflows** est très simple et, d'un point de vue personnel, je trouve qu'il est plus simple d'interagir avec son interface si on la compare à celles de GitLab ou GitHub. De plus, pour les personnes qui font leurs débuts dans le **CI/CD**, c'est un excellent outil. J'envisage peut-être d'intégrer des outils qui m'ont fait de l'œil, comme Devbox.
+- **HTTPS** : la sécurisation des communications via TLS doit être configurée (certificats auto‑signés ou ACME) afin de garantir l’intégrité et la confidentialité des échanges.
+- **Gestion du tfstate** : contrairement à GitLab, Forgejo ne fournit pas de backend natif pour le stockage de l’état Terraform/OpenTofu. Il convient donc de déployer une solution dédiée (par exemple MinIO, S3 compatible ou un serveur de stockage d’objets) et de configurer le backend distant dans les fichiers de configuration.
 
-👉 **Si vous cherchez une autre solution pour faire du CI/CD, vous trouverez votre bonheur sur ce dépôt GitHub : [https://github.com/ligurio/awesome-ci](https://github.com/ligurio/awesome-ci)**
+Malgré ces points, Forgejo se distingue par :
+
+- **Simplicité de la configuration des workflows** : la définition des pipelines repose sur des fichiers YAML intuitifs, faciles à lire et à maintenir.
+- **Interface ergonomique** : l’expérience utilisateur est fluide et moins encombrée que celle de GitLab ou GitHub, ce qui facilite la prise en main, notamment pour les équipes débutantes en CI/CD.
+- **Extensibilité** : la plateforme accepte l’ajout de runners personnalisés et peut être enrichie par des outils complémentaires tels que Devbox, offrant ainsi un environnement de développement reproductible.
+
+En résumé, Forgejo représente aujourd’hui une solution fiable et accessible pour automatiser vos processus de construction, de test et de déploiement. Son adoption constitue un bon point de départ, tout en laissant la porte ouverte à des intégrations plus avancées selon les besoins de votre organisation.
+
+> 👉 **Pour découvrir d’autres solutions CI/CD et comparer leurs fonctionnalités, consultez le dépôt GitHub : [https://github.com/ligurio/awesome-ci](https://github.com/ligurio/awesome-ci).**
 
 
