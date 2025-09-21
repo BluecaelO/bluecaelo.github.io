@@ -176,7 +176,10 @@ Dans mon cas, je veux que les **actions** soient réalisées directement dans le
 
 > Par défaut, si l'on ne spécifie pas le type de **label** à `host`, le **runner** utilisera **Docker**. Pour déclarer le type, il faut procéder de la manière suivante : `<label>:host`.
 
-Une fois que le **runner** est enregistré, on peut le lancer. Je l'ai lancé sous la forme de **service**, comme vous pouvez le voir [ici](https://forgejo.org/docs/latest/admin/actions/runner-installation/#running-as-a-systemd-service). Si tout se passe bien, le **runner** devrait être actif comme ci-dessous.
+Une fois que le **runner** est enregistré, on peut le lancer. Je l'ai lancé sous la forme d'un **service**, comme vous pouvez le voir [ici](https://forgejo.org/docs/latest/admin/actions/runner-installation/#running-as-a-systemd-service). Dans le fichier `forgejo-runner.service`, supprimez la ligne `After=docker.service`.
+
+Si tout se passe bien, le **runner** devrait être visible comme ci-dessous.
+
 
 ![Image](img/img2.png)
 
