@@ -247,3 +247,6 @@ jobs:
 C'est ainsi que s'achèvent mes premiers pas avec Forgejo. Il y a encore beaucoup de choses à améliorer, par exemple la mise en place du **HTTPS** ou la gestion des fichiers `tfstate`. En effet, contrairement à GitLab qui propose son propre **backend** pour gérer ces fichiers, Forgejo ne le fait pas. Il faudrait donc déployer un **backend** à part, comme MinIO, pour les gérer.
 
 Mais, malgré cela, Forgejo est vraiment une solution solide. La configuration des **workflows** est très simple et, d'un point de vue personnel, je trouve qu'il est plus simple d'interagir avec son interface si on la compare à celles de GitLab ou GitHub. De plus, pour les personnes qui font leurs débuts dans le **CI/CD**, c'est un excellent outil. J'envisage peut-être d'intégrer des outils qui m'ont fait de l'œil, comme Devbox.
+
+👉 **« Si Forgejo ne vous convient pas, vous trouverez votre bonheur sur ce dépôt GitHub : [https://github.com/ligurio/awesome-ci](https://github.com/ligurio/awesome-ci) »**
+
