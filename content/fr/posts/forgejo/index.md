@@ -1,5 +1,5 @@
 ---
-title: Forgejo : une alternative Open‑Source à GitHub
+title: Forgejo : une alternative Open Source à GitHub
 date: 2025-09-21
 description: Une introduction à Forgejo
 tags:
@@ -25,7 +25,7 @@ L’objectif de cet article est de présenter Forgejo tout en illustrant la mise
 ### Présentation
 
 
-Forgejo propose une alternative **open‑source** à GitHub, offrant une interface comparable tout en restant très légère grâce à son implémentation en **Go**. La maintenance se résume généralement à la modification du fichier de configuration `app.ini`.
+Forgejo propose une alternative **open source** à GitHub, offrant une interface comparable tout en restant très légère grâce à son implémentation en **Go**. La maintenance se résume généralement à la modification du fichier de configuration `app.ini`.
 
 **Pourquoi choisir Forgejo ?**
 
@@ -115,7 +115,7 @@ Lors de la première connexion, Forgejo vous demande de préciser des paramètre
 
 >Il est possible de modifier à tout moment les paramètres de Forgejo dans le fichier `/etc/forgejo/app.ini`.
 
-L’option Disable `self‑registration` permet de restreindre la création de comptes à l’administrateur. Cette option n’est valable que si un compte administrateur a déjà été créé. La création du compte administrateur s’effectue dans la section `Administrator account settings` de la page d’administration.
+L’option `Disable self‑registration` permet de restreindre la création de comptes à l’administrateur. Cette option n’est valable que si un compte administrateur a déjà été créé. La création du compte administrateur s’effectue dans la section `Administrator account settings` de la page d’administration.
 
 
 ### Configuration SSH
@@ -198,7 +198,7 @@ Ces **secrets** serviront notamment à stocker le **token** d’accès à Incus.
 
 ### Création du workflow
 
-Pour permettre l’exécution des workflows, le paramètre **Actions** doit être activé. Vous le trouverez dans les paramètres du **repository**, sous la section `Fonctionnalités > Vue générale`.
+Pour permettre l’exécution des workflows, le paramètre **Actions** doit être activé. Vous le trouverez dans les paramètres du **repository**, sous la section `Units> Overview`.
 
 ![Image](img/img5.png)
 
