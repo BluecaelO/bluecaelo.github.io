@@ -244,19 +244,18 @@ jobs:
 
 ## **Conclusion**
 
-Ces premiers pas avec Forgejo démontrent que la plateforme constitue déjà une base solide pour la mise en œuvre de pipelines CI/CD. Plusieurs axes d’amélioration restent néanmoins à explorer :
+Ces premiers pas avec Forgejo montrent déjà que la plateforme constitue une base solide pour mettre en place des pipelines CI/CD. Quelques améliorations restent à envisager :
 
-- **HTTPS** : la sécurisation des communications via TLS doit être configurée (certificats auto‑signés ou ACME) afin de garantir l’intégrité et la confidentialité des échanges.
-- **Gestion du tfstate** : contrairement à GitLab, Forgejo ne fournit pas de backend natif pour le stockage de l’état Terraform/OpenTofu. Il convient donc de déployer une solution dédiée (par exemple MinIO, S3 compatible ou un serveur de stockage d’objets) et de configurer le backend distant dans les fichiers de configuration.
+- **HTTPS** : configurez TLS (certificat auto‑signé ou via ACME) pour assurer l’intégrité et la confidentialité des échanges.
+- **Gestion du tfstate** : Forgejo ne propose pas de backend natif pour stocker l’état de Terraform/OpenTofu. Il faut donc déployer une solution dédiée (MinIO, S3 compatible ou autre serveur d’objets) et configurer le backend distant dans vos fichiers.
 
-Malgré ces points, Forgejo se distingue par :
+Malgré ces points, Forgejo se démarque par :
 
-- **Simplicité de la configuration des workflows** : la définition des pipelines repose sur des fichiers YAML intuitifs, faciles à lire et à maintenir.
-- **Interface ergonomique** : l’expérience utilisateur est fluide et moins encombrée que celle de GitLab ou GitHub, ce qui facilite la prise en main, notamment pour les équipes débutantes en CI/CD.
-- **Extensibilité** : la plateforme accepte l’ajout de runners personnalisés et peut être enrichie par des outils complémentaires tels que Devbox, offrant ainsi un environnement de développement reproductible.
+- **Des workflows simples** : les pipelines sont définis dans des fichiers YAML clairs, faciles à lire et à maintenir.
+- **Une interface ergonomique** : l’expérience utilisateur est fluide et moins encombrée que sur GitLab ou GitHub, ce qui facilite la prise en main, surtout pour les équipes novices en CI/CD.
 
-En résumé, Forgejo représente aujourd’hui une solution fiable et accessible pour automatiser vos processus de construction, de test et de déploiement. Son adoption constitue un bon point de départ, tout en laissant la porte ouverte à des intégrations plus avancées selon les besoins de votre organisation.
+En bref, Forgejo est aujourd’hui une solution fiable et accessible pour automatiser la construction, les tests et le déploiement. Son adoption constitue un bon point de départ, tout en laissant la possibilité d’ajouter ultérieurement des outils complémentaires comme Devbox pour enrichir l’environnement de développement.
 
-> 👉 **Pour découvrir d’autres solutions CI/CD et comparer leurs fonctionnalités, consultez le dépôt GitHub : [https://github.com/ligurio/awesome-ci](https://github.com/ligurio/awesome-ci).**
+> 👉 **Pour découvrir d’autres solutions CI/CD et comparer leurs fonctionnalités, consultez le dépôt GitHub :** [https://github.com/ligurio/awesome-ci](https://github.com/ligurio/awesome-ci).
 
 
